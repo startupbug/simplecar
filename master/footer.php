@@ -48,17 +48,17 @@
                           </form>
                        </div>
                        <div class='col-md-4 social-links'>
-                          <a class='social-link' href='https://www.facebook.com/SimpleCar.co'>
-                          <img alt="" src="assets/facebook-b191f5860634d0344cb05f2fe088ace7883a4ddfdc1294ecd5bebe511352f27b.png" />
+                          <a class='social-link' href='#'>
+                          <img alt="" src="<?php echo $base_url;?>assets/images/social/facebook.png" />
                           </a>
-                          <a class='social-link' href='https://twitter.com/SimpleCar_co'>
-                          <img alt="" src="assets/twitter-0ea0e87aceee8b6006f163fa933f8c6597b7a451a0400939720e5b504511f966.png" />
+                          <a class='social-link' href='#'>
+                          <img alt="" src="<?php echo $base_url;?>assets/images/social/twitter.png" />
                           </a>
-                          <a class='social-link' href='https://www.linkedin.com/company/simplecar.co'>
-                          <img alt="" src="assets/in-f42ae2cc33a834818a008333bc3431497c6e99ab310d7eccf3f6cda6f1300375.png" />
+                          <a class='social-link' href='#'>
+                          <img alt="" src="<?php echo $base_url;?>assets/images/social/in.png" />
                           </a>
-                          <a class='social-link' href='https://www.instagram.com/simplecar.co'>
-                          <img alt="" src="assets/insta-0e195d3c8932f8913669abb62e080bdfb6420371165bcc9a465141fa36ff1cc9.png" />
+                          <a class='social-link' href='#'>
+                          <img alt="" src="<?php echo $base_url;?>assets/images/social/insta.png" />
                           </a>
                        </div>
                     </div>
@@ -71,7 +71,6 @@
         window.intercomSettings = {"app_id":"twdf3efd"};(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/twdf3efd';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}};})()
       </script>
 
-      <script src="<?php echo $base_url;?>assets/js/window.js" data-turbolinks-track="true"></script>
       <script src="<?php echo $base_url;?>assets/js/custom.js" data-turbolinks-track="true"></script>
    </body>
 </html>

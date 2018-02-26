@@ -1,4 +1,4 @@
-<?php $base_url = 'http://localhost/simplecar/'; ?>
+<?php $base_url = 'http://localhost/simplecar/frontend/simplecar/'; ?>
 <!DOCTYPE html>
 <html>
    <head>

@@ -171,13 +171,13 @@
               </div>
            </div>
            <div class='col-md-4 options-form'>
-              
+
               @if(isset($car->brand_name) && isset($car->model_name))
                <h1>{{$car->brand_name}} {{$car->model_name}}</h1>
-              @endif 
+              @endif
               <ul class='list-inline generations'>
 
-				  @foreach(explode(',', $car->year) as $key => $year) 
+				  @foreach(explode(',', $car->year) as $key => $year)
                  		<li><a class=@if($key=="0")"active"@endif href="#">{{$year}}</a></li>
 				  @endforeach
               </ul>
@@ -185,7 +185,7 @@
                  Choose your
                  <strong>style</strong>
               </div>
-   
+
 
               <ul class='trims'>
 
@@ -197,13 +197,13 @@
                        </div>
                     </a>
                  </li>
-
-				  @foreach(explode(',', $car->style) as $key => $style) 
+123
+				  @foreach(explode(',', $car->style) as $key => $style)
 				     <li class=@if($key=="0")"active"@elseif($key>="7")"hidden"@endif>
 				        <a href="#">
-				           <div class='name'>
+				           <!-- <div class='name'>
 				              {{$style}}
-				           </div>
+				           </div> -->
 				           <!--<div class='description'>
 				              2.4L 4cyl 9A
 				           </div> -->
@@ -402,7 +402,7 @@
                  </div>
                  <div class="form-group check_boxes optional order_form_exterior_colors">
                    <input type="hidden" name="order_form[exterior_colors][]" value="" />
-                   
+
                    @foreach(explode(',', $car->ext_color) as $key => $value)
 	                   <span class="checkbox">
 	                     <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="79103" name="order_form[exterior_colors][]" id="order_form_exterior_colors_79103" />
@@ -443,7 +443,7 @@
                  <div class="form-group check_boxes optional order_form_interior_colors">
                    <input type="hidden" name="order_form[interior_colors][]" value="" />
 
-                   @foreach(explode(',', $car->int_color) as $key => $value)				                   
+                   @foreach(explode(',', $car->int_color) as $key => $value)
 	                   <span class="checkbox">
 	                     <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="79110" name="order_form[interior_colors][]" id="order_form_interior_colors_79110" />
 	                     <label class="collection_check_boxes" for="order_form_interior_colors_79110">Black/Light Frost Beige</label>
@@ -455,7 +455,7 @@
                      <label class="collection_check_boxes" for="order_form_interior_colors_79109">Black</label>
                    </span> -->
                  </div>
-                <!-- 
+                <!--
                  <div class='form-group check_boxes optional order_form_packages'>
                     <label class="optional control-label" for="order_form_packages">Choose package</label>
                     <input type="hidden" name="order_form[packages][]" value="" />
@@ -996,7 +996,7 @@
                           </div>
                        </div>
                     </span>
-                 </div> 
+                 </div>
                  -->
                  <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Any additional comments or special requests?</label><textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control form-control" name="order_form[comment]" id="order_form_comment">
                     </textarea>
@@ -1007,5 +1007,5 @@
         </div>
      </div>
   </section>
-	
+
 @endsection

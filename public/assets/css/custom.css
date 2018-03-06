@@ -10494,3 +10494,57 @@ input[type=radio]:checked + label{
 .s_dropdown a:hover {background-color: #57565670}
 
 .show {display:block;}
+
+.input_container_radio {
+    position: relative;
+    color: #888;
+    width: 100%;
+    font-weight: 400;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: "Montserrat";
+    font-size: 16px;
+    border-radius: 0.3rem;
+    background: #ffffff;
+    border: 0.1px solid #dcdcdc;
+    box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Hide the browser's default checkbox */
+.input_container_radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* On mouse-over, add a grey background color */
+.input_container_radio:hover{
+  background-color: #fff;
+  box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* When the checkbox is checked, add a blue background */
+.input_container_radio input:checked  input:parent {
+    background-color: #000;
+}
+.input_container_radio input:checked{
+  background-color: #999;
+}
+/* Show the checkmark when checked */
+.input_container_radio input:checked < .input_container_radio  {
+    background: blue;
+}
+
+/* Style the checkmark/indicator */
+.input_container_radio .checkmark:after {
+  left: -23px;
+  top: -3px;
+  width: 69px;
+  height: 34px;
+  border-radius: 3px;
+  color: #fff;
+  background: #7b7eff;
+}

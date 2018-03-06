@@ -96,10 +96,17 @@ Route::post('/submit_req', 'CarController@submit_req')->name('submit_req');
 Route::get('/sel_reqs',  'CarController@sel_reqs')->name('sel_reqs');
 
 /* Seller request page of Model Single Contact Page */
-Route::get('/deal-model/{id}',  'CarController@deal_model')->name('deal_model');
+Route::get('/deal-model-seller/{id}',  'CarController@deal_model_seller')->name('deal_model_seller');
+
+/* User request page of Model Single Contact Page */
+Route::get('/deal-model-user/{id}',  'CarController@deal_model_user')->name('deal_model_user');
+
 
 /* Submitting Sellers Response on user requests Models */
 Route::post('/submit_sell_res',  'CarController@submit_sell_res')->name('submit_sell_res');
 
 /* Profile Controller */
 Route::get('/profile',  'ProfileController@index')->name('profile');
+
+/* Profile Edit Submit */
+Route::post('/profile_edit_submit', 'ProfileController@profile_edit_submit')->name('profile_edit_submit');

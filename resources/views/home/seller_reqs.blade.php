@@ -18,7 +18,11 @@
             
             @foreach($user_requests as $request)
                <div class="col-sm-4">
-                  <a class="thumbnail" href="{{route('deal_model', ['id' => $request->requests_id])}}">
+               @if(Auth::user()->role_id == 1)
+                  <a class="thumbnail" href="{{route('deal_model_seller', ['id' => $request->requests_id])}}">
+               @else(Auth::user()->role_id == 2) 
+                  <a class="thumbnail" href="{{route('deal_model_user', ['id' => $request->requests_id])}}">
+               @endif      
                      <div class="badge-wrapper"></div>
                         @if(isset($request->car_image))
                            <img class="img-responsive" src="{{asset('/public/dashboard/img/car_assets/'.$request->car_image)}}" alt="Covered">

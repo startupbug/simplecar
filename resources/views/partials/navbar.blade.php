@@ -19,7 +19,7 @@
                         <div class="form-group boolean optional user_identity_remember_me"><input name="user_identity[remember_me]" type="hidden" value="0" /><input class="boolean optional" type="checkbox" value="1" name="user_identity[remember_me]" id="_user_identity_remember_me" /><label class="boolean optional" for="_user_identity_remember_me">Remember me</label></div>
                      </div>
                      <div class='form-actions'>
-                        <input type="hidden" value="{{Session::token()}}" name="_token">                         
+                        <input type="hidden" value="{{Session::token()}}" name="_token">
                         <input type="submit" value="Sign in" class="btn btn-default" />
                      </div>
                   </form>
@@ -98,27 +98,39 @@
             <li>
 
                 @if(Auth::user()->role_id==3)
-                  <a class='btn-sign-up' target="_blank"  href="{{route('dashboard')}}">
-                  {{Auth::user()->name}}
-                  </a>
+                <div class="s_dropdown">
+                  <button onclick="myFunction()" class="s_dropbtn">{{Auth::user()->name}}</button>
+                  <div id="myDropdown" class="s_dropdown-content">
+                    <a href="">Profile</a>
+                    <a href="">Logout</a>
+                  </div>
+                </div>
                 @endif
 
 
                 @if(Auth::user()->role_id==2)
-                  <a class='btn-sign-up'  href='#'>
-                  {{Auth::user()->name}}
-                  </a>
+                <div class="s_dropdown">
+                  <button onclick="myFunction()" class="s_dropbtn">{{Auth::user()->name}}</button>
+                  <div id="myDropdown" class="s_dropdown-content">
+                    <a href="">Profile</a>
+                    <a href="">Logout</a>
+                  </div>
+                </div>
                 @endif
 
 
                 @if(Auth::user()->role_id==1)
-                  <a class='btn-sign-up' href='#'>
-                  {{Auth::user()->name}}
-                  </a>
+                <div class="s_dropdown">
+                  <button onclick="myFunction()" class="s_dropbtn">{{Auth::user()->name}}</button>
+                  <div id="myDropdown" class="s_dropdown-content">
+                    <a href="">Profile</a>
+                    <a href="">Logout</a>
+                  </div>
+                </div>
                 @endif
-                                                
 
-            </li>           
+
+            </li>
            @endif
 
 

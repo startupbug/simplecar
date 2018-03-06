@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
 	//Home Page
     public function index(){
-       $data['brands'] = Brand::all();
+       $data['brands'] = Brand::all();       
        return view('home.index')->with($data);
     }
 }

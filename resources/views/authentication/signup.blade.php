@@ -42,7 +42,7 @@
                                     </label>
                                     <select name="role_id">
                                     	<option value="1">Seller</option>
-                                    	<option value="2">User</option>                                    	
+                                    	<option value="2">User</option>
                                     </select>
                                   </div>
 

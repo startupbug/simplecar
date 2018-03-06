@@ -3,8 +3,8 @@
 @section('content')
   <div id='landing_header'>
            @include('partials.navbar')
-           
-    <h1>Getting a new car has never been that Simple</h1>
+
+    <h1>Gettingz a new car has never been that Simple</h1>
     <div class='container'>
        <form class="simple_form form-inline model-selection" action="{{route('send_model_request')}}" accept-charset="UTF-8" method="post">
           <input name="utf8" type="hidden" value="&#x2713;" />
@@ -541,7 +541,7 @@
     </div>
  </div>
  <div id='how_it_works'>
-      @include('partials.error_section') 
+      @include('partials.error_section')
     <h2>
        How SimpleCar works?
        <span>

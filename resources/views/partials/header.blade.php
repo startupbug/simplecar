@@ -40,9 +40,10 @@
       <link rel="icon" type="image/png" href="{{ asset('public/assets/assets/favicons/favicon-16x16.png') }}" />
 
       <link rel="stylesheet" media="all" href="{{ asset('public/assets/css/custom.css') }}" data-turbolinks-track="true" />
-       
+
       <!-- Toastr CSS -->
       <link href="{{ asset('public/assets/css/toastr.min.css') }}" rel="stylesheet">
+      <!-- <link href="{{ asset('public/assets/css/w3.css') }}" rel="stylesheet"> -->
 
       <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Lato:300|Montserrat:400,700" data-turbolinks-track="true" />
    </head>
@@ -52,4 +53,3 @@
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <!-- End Google Tag Manager (noscript) -->
       <div class='landing'>
-      

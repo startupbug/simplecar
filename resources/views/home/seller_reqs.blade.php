@@ -33,9 +33,10 @@
                            </h2>
                            <div class="generation pull-right">
                               {{$request->req_year}}
-                           </div>
+                           </div>                           
                         </div>
-                        <div class="trim-name">{{$request->req_style}}</div>
+                        <div class="trim-name">{{$request->req_style}} </div>
+                         By {{$request->user_name}}
                      </div>
                   </a>
                </div>

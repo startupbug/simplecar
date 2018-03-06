@@ -249,4 +249,9 @@ class DashboardController extends Controller
 
        return Datatables::of($users)->make(true);      
     }
+
+    /* Dashboard Request Responses */
+    public function request_responses($requestid){
+        dd($requestid);
+    }
 }

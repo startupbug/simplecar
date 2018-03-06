@@ -88,15 +88,24 @@ class CarController extends Controller
        // dd($request->input());
     }
 
-    //Seller Requests Browse Page
+    //Seller and Users Requests Browse Page
     public function sel_reqs(){
 
         //Getting all Requests
         $data['user_requests'] = Requestz::join('brands', 'requests.brand_id', '=', 'brands.id')
                                 ->join('models', 'requests.model_id', '=', 'models.id')
-                                ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id')
-                                ->get();
-        //dd($user_requests);
+                                ->join('users', 'users.id', '=', 'requests.user_id')
+                                ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'users.name as user_name');
+
+
+
+        if(Auth::check() && Auth::user()->role_id == 2){
+            //A user
+            $data['user_requests']->where('users.id', Auth::user()->id);
+          
+        }
+
+        $data['user_requests'] = $data['user_requests']->get();                        
 
         return view('home.seller_reqs')->with($data);
     }

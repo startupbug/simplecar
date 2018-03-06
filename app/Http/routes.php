@@ -60,6 +60,11 @@ Route::get('/dashboard/get-users', 'DashboardController@users_dt')->name('users_
 
 /* Models Datatable */
 Route::get('/dashboard/get-models', 'DashboardController@models_dt')->name('models_dt');
+
+
+/* Dashboard Request responses */
+Route::get('/dashboard/request-responses/{requestid}', 'DashboardController@request_responses')->name('request_responses');
+
 /* Authentication Routes */
 
 //Login View
@@ -95,3 +100,6 @@ Route::get('/deal-model/{id}',  'CarController@deal_model')->name('deal_model');
 
 /* Submitting Sellers Response on user requests Models */
 Route::post('/submit_sell_res',  'CarController@submit_sell_res')->name('submit_sell_res');
+
+/* Profile Controller */
+Route::get('/profile',  'ProfileController@index')->name('profile');

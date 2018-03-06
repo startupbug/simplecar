@@ -1,0 +1,12 @@
+<table id="adsDelete">
+  <thead>
+   <tr>
+       <th>ID</th>
+       <th>Image</th>
+       <th>Title</th>
+       <th>City</th>
+       <th>Status</th>
+       <th>Action</th>
+   </tr>
+ </thead>
+</table>	

@@ -10451,3 +10451,46 @@ input[type=radio]:checked + label{
   color: #fff;
   background: #7b7eff;
 }
+
+
+.s_dropbtn {
+  background-color: #30d279;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  padding: 1rem 3rem;
+  border-radius: 2rem;
+  margin: 1.5rem 4rem 0;
+}
+
+.s_dropbtn:hover, .s_dropbtn:focus {
+    background-color: #25aa61;
+}
+
+.s_dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.s_dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #69646466;
+    min-width: 130px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.s_dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.s_dropdown a:hover {background-color: #57565670}
+
+.show {display:block;}

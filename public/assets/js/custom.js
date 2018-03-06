@@ -21,6 +21,23 @@ function changepage() {
 	$( "#options" ).removeClass( "active" );
 }
 
+
+$("#deal_offer").click(function(){
+   $(this).addClass("active");
+   $("#deal_offer_detail").removeClass("hidden");
+
+   $("#deal_offer_responses").removeClass("active");
+	 $("#deal_offer_responses_detail").addClass("hidden");
+});
+
+$("#deal_offer_responses").click(function(){
+   $("#deal_offer").removeClass("active");
+   $("#deal_offer_detail").addClass("hidden");
+
+   $(this).addClass("active");
+	 $("#deal_offer_responses_detail").removeClass("hidden");
+});
+
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
@@ -14043,7 +14060,7 @@ if (typeof jQuery === 'undefined') {
             rebuild();
             return;
         }
-        
+
         if (win.pageYOffset != scroll.top) {
             updateScrollPos();
             recalcAllPos();
@@ -14243,7 +14260,7 @@ if (typeof jQuery === 'undefined') {
             },
             nodeOffset = getElementOffset(node),
             parentOffset = getElementOffset(parentNode),
-            
+
             parent = {
                 node: parentNode,
                 css: {
@@ -14359,11 +14376,11 @@ if (typeof jQuery === 'undefined') {
         if (!initialized) return;
 
         deinitAll();
-        
+
         for (var i = watchArray.length - 1; i >= 0; i--) {
             watchArray[i] = getElementParams(watchArray[i].node);
         }
-        
+
         initAll();
     }
 
@@ -14381,7 +14398,7 @@ if (typeof jQuery === 'undefined') {
 
     function stop() {
         pause();
-        deinitAll(); 
+        deinitAll();
     }
 
     function kill() {

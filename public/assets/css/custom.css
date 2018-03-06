@@ -10563,3 +10563,9 @@ input[type=radio]:checked + label{
 .s_form{
     padding: 0 10px;
  }
+ ul.order-menu li {
+     cursor: pointer;
+ }
+ .table_offer_responses {
+    padding: 25px 100px;
+}

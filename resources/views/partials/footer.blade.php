@@ -74,10 +74,12 @@
       </script>
 
       <!-- jQuery -->
-      <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
-
+      <!-- <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js" charset="utf-8"></script>
       <!-- Bootstrap Core JavaScript -->
       <script src="{{ asset('public/assets/js/bootstrap.min.js') }}"></script>
+
+
 
       <!-- Toaster Alert Files -->
       <script src="{{ asset('public/assets/js/toastr.min.js') }}"></script>
@@ -90,28 +92,33 @@
 
       <script src="{{ asset('public/assets/js/custom.js') }}" data-turbolinks-track="true"></script>
 
+      <script src="{{ asset('public/assets/js/jquery.dataTables.min.js') }}"></script>
+      <script src="{{ asset('public/assets/js/dataTables.bootstrap.min.js') }}"></script>
+
       <script type="text/javascript">
+        $(document).ready(function() {
+            $('#stableexample').DataTable();
+        } );
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-if (!event.target.matches('.dropbtn')) {
-
-  var dropdowns = document.getElementsByClassName("dropdown-content");
-  var i;
-  for (i = 0; i < dropdowns.length; i++) {
-    var openDropdown = dropdowns[i];
-    if (openDropdown.classList.contains('show')) {
-      openDropdown.classList.remove('show');
-    }
-  }
-}
-}
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
       </script>
    </body>
 </html>

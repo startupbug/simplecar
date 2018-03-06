@@ -39,6 +39,10 @@
       <link rel="icon" type="image/png" href="{{ asset('public/assets/assets/favicons/favicon-96x96.png') }}" />
       <link rel="icon" type="image/png" href="{{ asset('public/assets/assets/favicons/favicon-16x16.png') }}" />
 
+      <link rel="stylesheet" media="all" href="{{ asset('public/assets/css/bootstrap.min.css') }}" data-turbolinks-track="true" />
+      <link rel="stylesheet" media="all" href="{{ asset('public/assets/css/dataTables.bootstrap.min.css') }}" data-turbolinks-track="true" />
+
+
       <link rel="stylesheet" media="all" href="{{ asset('public/assets/css/custom.css') }}" data-turbolinks-track="true" />
 
       <!-- Toastr CSS -->

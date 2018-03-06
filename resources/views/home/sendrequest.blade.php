@@ -192,198 +192,26 @@
                 </div>
                 <ul class='trims'>
                    <li>
-                      <a class="not-sure" href="#">
-                         <div class='name'>Not sure</div>
-                         <div class='description'>
+                     <div class="years">
+                       <input type="radio" name="req_year_1" value="Not sure" id="yy">
+                       <label class="input_container_radio" for="yy">
+                         Not sure
+                         <div class='s_description'>
                             Send me the best offers for this model
                          </div>
-                      </a>
-                   </li>
-                   <li class=''>
-
-                     <div class="years">
-                       <input type="radio" name="abc" value="2asdas3">
-                       <label class="input_container_radio">75th Anniversary asdasdas4dr SUV
                          <span class="checkmark"></span>
                        </label>
                      </div>
-
-                      <div class="years">
-                        <input type="radio" name="abc" value="23dsfd" >
-                        <label class="input_container_radio">75th Anniversary asdasdas4dr SUV
-                          <span class="checkmark"></span>
-                        </label>
-                      </div>
-
-                       <div class="years">
-                         <input type="radio" name="abc" value="2sdfsdf3" >
-                         <label class="input_container_radio">75th Anniversary asdasdas4dr SUV
-                           <span class="checkmark"></span>
-                         </label>
-                       </div>
-
-                        <div class="years">
-                          <input type="radio" name="abc" value="2143" >
-                          <label class="input_container_radio">75th Anniversary asdasdas4dr SUV
-                            <span class="checkmark"></span>
-                          </label>
-                        </div>
-
+                     @foreach(explode(',', $car->year) as $key => $year)
                          <div class="years">
-                           <input type="radio" name="abc" value="2123" >
-                           <label class="input_container_radio">75th Anniversary asdasdas4dr SUV
+                           <input type="radio" name="req_year_1" value="{{$year}}" id="yy-{{$year}}">
+                           <label class="input_container_radio" for="yy-{{$year}}">{{$year}}
                              <span class="checkmark"></span>
                            </label>
                          </div>
+                     @endforeach
                    </li>
-                   <li class=''>
-                     <!-- <div class="years">
-                       <input type="radio" name="abc" value="asndhgf" >
-                       <label class="input_container_radio" for="23">75th Anni SUV
-                         <span class="checkmark"></span>
-                       </label>
-                     </div> -->
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            Altitude 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            Altitude 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            High Altitude 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            High Altitude 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Latitude 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Latitude 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Limited 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Limited 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            L Plus 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Overland 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Overland 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            3.2L 6cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Sport 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Sport 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Trailhawk 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
+
                 </ul>
                  <button class='see-more-trims'>See more</button>
                  <input name="utf8" type="hidden" value="&#x2713;" />

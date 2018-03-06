@@ -101,8 +101,9 @@
                 <div class="s_dropdown">
                   <button onclick="myFunction()" class="s_dropbtn">{{Auth::user()->name}}</button>
                   <div id="myDropdown" class="s_dropdown-content">
-                    <a href="">Profile</a>
-                    <a href="">Logout</a>
+                    <a href="{{route('dashboard')}}">Dashboard</a>                  
+                    <a href="{{route('profile')}}">Profile</a>
+                    <a href="{{route('logout_user')}}">Logout</a>
                   </div>
                 </div>
                 @endif
@@ -112,8 +113,8 @@
                 <div class="s_dropdown">
                   <button onclick="myFunction()" class="s_dropbtn">{{Auth::user()->name}}</button>
                   <div id="myDropdown" class="s_dropdown-content">
-                    <a href="">Profile</a>
-                    <a href="">Logout</a>
+                    <a href="{{route('profile')}}">Profile</a>
+                    <a href="{{route('logout_user')}}">Logout</a>
                   </div>
                 </div>
                 @endif
@@ -123,8 +124,8 @@
                 <div class="s_dropdown">
                   <button onclick="myFunction()" class="s_dropbtn">{{Auth::user()->name}}</button>
                   <div id="myDropdown" class="s_dropdown-content">
-                    <a href="">Profile</a>
-                    <a href="">Logout</a>
+                    <a href="{{route('profile')}}">Profile</a>
+                    <a href="{{route('logout_user')}}">Logout</a> 
                   </div>
                 </div>
                 @endif

@@ -12,6 +12,8 @@ use App\Role;
 
 use Auth;
 
+use App\Profile;
+
 class AuthenticationController extends Controller
 {
     public function register_index(){
@@ -37,9 +39,12 @@ class AuthenticationController extends Controller
 
 	            /*Attaching User Role to the New User */ 
 	            // - 1- Seller
-	            // - 2- Normal user 
+	            // - 2- Normal user
 	             $user_role = Role::find($request->input('role_id'));
 	             $user->attachRole($user_role);
+
+                 /* Creating User Profile */
+                 $profile = Profile::create(['user_id'=>$user->id]);
 
                  $this->set_session('User Successfully Registered.', true);
             }else{

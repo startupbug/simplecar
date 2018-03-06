@@ -111,14 +111,24 @@ class CarController extends Controller
     }
 
     public function deal_model($id){
-        //dd($id);
+
         $data['car'] = Requestz::join('brands', 'requests.brand_id', '=', 'brands.id')
                                 ->join('models', 'requests.model_id', '=', 'models.id')
                                 ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'requests.req_ext_color', 'requests.req_int_color')
                                 ->where('requests.id', $id)
                                 ->first();
-        //dd($data);
         return view('home.sendrequest_seller')->with($data);
+    }
+
+    public function deal_model_user($id){
+
+        $data['car'] = Requestz::join('brands', 'requests.brand_id', '=', 'brands.id')
+                                ->join('models', 'requests.model_id', '=', 'models.id')
+                                ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'requests.req_ext_color', 'requests.req_int_color')
+                                ->where('requests.id', $id)
+                                ->first();
+                                
+        return view('home.sendrequest_user')->with($data);
     }
 
     public function submit_sell_res(Request $request){
@@ -126,15 +136,22 @@ class CarController extends Controller
         /* Validation */
 
         try{
-            //Inserting Seller Response for this Model by User
-            $sel_res = Seller_response::create($request->input());
 
-            //Getting This request's User:
+            //Inserting Seller Response for this Model by User
+            $sel_res = Seller_response::create(array_merge($request->input(), ['user_id' => Auth::user()->id]));
+
+            /* Getting Sellers Details to be sent in Email */
+            //$sel_res->user_id;
+
+
+            //Getting This request's User Email:
             $req_user = Requestz::where('id', $request->input('req_id'))->first(['user_id']);
 
             $temp = User::where('id', $req_user->user_id)->first(['email']);
 
-            $user_email = $temp->email;        
+            $user_email = $temp->email;    
+
+            /* END */   // ---come
 
             $result = Mail::queue('emails.seller_response', ['seller_name' => $sel_res->sell_name
                 ,'sell_email'=>$sel_res->sell_email,'sell_contact'=>$sel_res->sell_contact,'sel_comment'=>$sel_res->sel_comment], function ($m) use ($user_email) {

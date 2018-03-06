@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Seller_response extends Model
 {
     protected $fillable = [
-        'req_id', 'sell_name', 'sell_email', 'sell_contact', 'sel_comment'
+        'req_id', 'user_id', 'offer', 'sel_comment',
     ];
 }

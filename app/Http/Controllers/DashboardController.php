@@ -18,6 +18,8 @@ use App\User;
 
 use Datatables;
 
+use App\Seller_response;
+
 class DashboardController extends Controller
 {
     //Dashboard Index Page
@@ -115,7 +117,7 @@ class DashboardController extends Controller
            $requests = Requestz::join('brands','requests.brand_id', '=', 'brands.id')
                   ->join('models','requests.model_id', '=', 'models.id')
                   ->select('models.car_image as image', 'brands.brand_name', 'requests.req_year', 'requests.req_style', 
-                    'requests.req_ext_color', 'requests.req_int_color', 'requests.req_comment', 'requests.status')->get();
+                    'requests.req_ext_color', 'requests.req_int_color', 'requests.req_comment', 'requests.status', 'requests.id as request_id')->get();
 
            return Datatables::of($requests)->editColumn('image',
             function($requests){
@@ -125,7 +127,7 @@ class DashboardController extends Controller
             function($requests){
               
               if($requests->status>0){
-                return '<span class="badge badge-success">'.$requests->status.' User Responded</span>';
+                return '<a href="'.route('request_responses', ["requestid"=>$requests->request_id]).'"><span class="badge badge-success">'.$requests->status.' User Responded</span></a>';
               }else{
                 return '<span class="badge badge-danger">Requested</span>';
               }
@@ -252,6 +254,8 @@ class DashboardController extends Controller
 
     /* Dashboard Request Responses */
     public function request_responses($requestid){
-        dd($requestid);
+        //dd($requestid);
+         Seller_response::where('req_id', $requestid)->get();
+        return view('dashboard.request-responses');
     }
 }

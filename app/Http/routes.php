@@ -110,3 +110,5 @@ Route::get('/profile',  'ProfileController@index')->name('profile');
 
 /* Profile Edit Submit */
 Route::post('/profile_edit_submit', 'ProfileController@profile_edit_submit')->name('profile_edit_submit');
+
+/* Change Password Routes */

@@ -488,8 +488,12 @@
                  </div>
                  <input type="hidden" name="_token" value="{{Session::token()}}">
                  <input type="hidden" name="req_id" value="{{$car->requests_id}}">
-                 <input type="submit" name="submit" value="Send Offer to User" class="btn s_button"/>
-    </form>
+                 @if(Auth::check())
+                  <input type="submit" name="submit" value="Send Offer to User" class="btn s_button"/>
+                 @else
+                   <input type="submit" name="submit" value="Please Login to Send Offer" class="btn s_button"/>
+                 @endif
+                </form>
              </div>
           </div>
        </div>

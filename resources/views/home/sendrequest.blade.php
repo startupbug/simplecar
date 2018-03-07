@@ -202,7 +202,7 @@
                          <span class="checkmark"></span>
                        </label>
                      </div>
-                     
+
                     @foreach(explode(',', $car->style) as $key => $style)
                         <div class="years">
                                <input type="radio" name="req_style" value="{{$style}}" id="yy-{{$style}}">
@@ -428,7 +428,14 @@
                          <input type="hidden" name="brand_id" value="{{$car->brandz_id}}" />
                          <input type="hidden" name="model_id" value="{{$car->model_id}}" />
                          <input type="hidden" name="_token" value="{{Session::token()}}" />
-                         <input type="submit" name="commit" value="Get best offers" class="btn btn-lg btn-block" data-disable-with="Get best offers">
+
+                         @if(Auth::check())
+                            <input type="submit" name="commit" value="Get best offers" class="btn btn-lg btn-block" data-disable-with="Get best offers">                         
+                         @else
+                            <a href="{{route('register_index')}}"><button type="button" name="commit" value="Please Login to Send Request" class="btn btn-lg btn-block" data-disable-with="Get best offers"> Please Login to Send Request</a>
+                         @endif
+                         
+
                       </form>
                    </div>
                 </div>

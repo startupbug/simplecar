@@ -15,22 +15,23 @@ use Auth;
 class ProfileController extends Controller
 {
     public function index(){
+
       $data['profile'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')
       						 ->select('users.id as user_id', 'profiles.id as profile_id', 'users.name', 'users.email', 
       						 	'profiles.contact', 'profiles.address', 'profiles.city')
       						 ->where('profiles.user_id', Auth::user()->id)
       					     ->first();
-      //dd( $data['profile'] );
 
       return view('profile.index')->with($data);
     }
 
     public function profile_edit_submit(Request $request){
-    	dd($request->input());
-    	
+    	//dd($request->input());
+
     	try{
 	    	/* Validation */
-	      	$user_id = $request->input('user_id');
+	      
+        $user_id = $request->input('user_id');
 	    	
 	    	//Updating User Name if Updation
 	    	$user = User::find($user_id);

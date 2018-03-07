@@ -66,12 +66,12 @@ class CarController extends Controller
             $requestz->brand_id = $request->input('brand_id');
             $requestz->user_id = Auth::user()->id;
             $requestz->req_year = $request->input('req_year');
-            //$requestz->req_style = $request->input('req_year');
+            $requestz->req_style = $request->input('req_style');
             $requestz->req_ext_color = implode(',',$request->input('req_ext_color'));
             $requestz->req_int_color = implode(',',$request->input('req_int_color'));        
             $requestz->req_comment = $request->input('req_comment');
             $requestz->model_id = $request->input('model_id');
-            $requestz->status = 1; //status 1 - requested
+            $requestz->status = 0; //status 0 - requested
 
             if($requestz->save()){
                $this->set_session('Request Successfully Submitted.', true);
@@ -110,13 +110,14 @@ class CarController extends Controller
         return view('home.seller_reqs')->with($data);
     }
 
-    public function deal_model($id){
+    public function deal_model_seller($id){
 
         $data['car'] = Requestz::join('brands', 'requests.brand_id', '=', 'brands.id')
                                 ->join('models', 'requests.model_id', '=', 'models.id')
                                 ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'requests.req_ext_color', 'requests.req_int_color')
                                 ->where('requests.id', $id)
                                 ->first();
+
         return view('home.sendrequest_seller')->with($data);
     }
 
@@ -127,7 +128,11 @@ class CarController extends Controller
                                 ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'requests.req_ext_color', 'requests.req_int_color')
                                 ->where('requests.id', $id)
                                 ->first();
-                                
+         /* Request Responses */
+        $data['sel_responses'] = Seller_response::join('users', 'seller_responses.user_id', '=', 'users.id')
+                                       ->join('profiles', 'seller_responses.user_id', '=', 'profiles.user_id')
+                                        ->where('seller_responses.req_id', $id)
+                                        ->get();
         return view('home.sendrequest_user')->with($data);
     }
 
@@ -141,8 +146,12 @@ class CarController extends Controller
             $sel_res = Seller_response::create(array_merge($request->input(), ['user_id' => Auth::user()->id]));
 
             /* Getting Sellers Details to be sent in Email */
-            //$sel_res->user_id;
-
+            $email_content = User::join('profiles', 'profiles.user_id', '=', 'users.id')
+                             ->select('users.id as user_id', 'profiles.id as profile_id', 'users.name', 'users.email', 
+                                'profiles.contact', 'profiles.address', 'profiles.city')
+                             ->where('profiles.user_id', $sel_res->user_id)
+                             ->first();
+            //dd($sel_res->user_id);
 
             //Getting This request's User Email:
             $req_user = Requestz::where('id', $request->input('req_id'))->first(['user_id']);
@@ -151,10 +160,10 @@ class CarController extends Controller
 
             $user_email = $temp->email;    
 
-            /* END */   // ---come
+            /* END */ 
 
-            $result = Mail::queue('emails.seller_response', ['seller_name' => $sel_res->sell_name
-                ,'sell_email'=>$sel_res->sell_email,'sell_contact'=>$sel_res->sell_contact,'sel_comment'=>$sel_res->sel_comment], function ($m) use ($user_email) {
+            $result = Mail::queue('emails.seller_response', ['seller_name' => $email_content->name
+                ,'sell_email'=>$email_content->email,'sell_contact'=>$sel_res->contact,'sel_comment'=>$sel_res->sel_comment], function ($m) use ($user_email) {
                $m->from('farhanuddin.aimviz@gmail.com', 'SimpleCar');
                $m->to('farhanuddin.aimviz@gmail.com')->subject('Simple Car Request Response');
             });
@@ -168,11 +177,11 @@ class CarController extends Controller
                $this->set_session('Offer couldnot be Sent.', false);
             }
 
-            return redirect()->route('deal_model', ["id" => $sel_res->req_id]);            
+            return redirect()->route('deal_model_seller', ["id" => $sel_res->req_id]);            
 
         }catch(\Exception $e){
             $this->set_session('Request Couldnot be Submitted.'.$e->getMessage(), false);
-            return redirect()->route('deal_model', ["id" => $sel_res->req_id]);              
+            return redirect()->route('deal_model_seller', ["id" => $sel_res->req_id]);              
         }
 
     }

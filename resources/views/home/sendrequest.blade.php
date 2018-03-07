@@ -136,7 +136,7 @@
                             <h3>{{$car->brand_name}}<strong>  {{$car->model_name}}</strong></h3>
                           @endif
 
-                         <h4>75th Anniversary 4dr SUV<small>2.4L 4cyl 9A</small></h4>
+                         <!--<h4>75th Anniversary 4dr SUVZZ<small>2.4L 4cyl 9A</small></h4> -->
                       </div>
                       <div class='details'>
                          <div class='row'>
@@ -157,14 +157,14 @@
                                      Whatever is cheaper
                                   </div>
                                </div>
-                               <div class='specific-detail'>
+                               <!--<div class='specific-detail'>
                                   <div class='detail-name'>
                                      Packages
                                   </div>
                                   <div class='detail-value packages'>
                                      None
                                   </div>
-                               </div>
+                               </div> -->
                             </div>
                          </div>
                       </div>
@@ -193,7 +193,7 @@
                 <ul class='trims'>
                    <li>
                      <div class="years">
-                       <input type="radio" name="req_year_1" value="Not sure" id="yy">
+                       <input type="radio" name="req_style" value="Any" id="yy">
                        <label class="input_container_radio" for="yy">
                          Not sure
                          <div class='s_description'>
@@ -202,14 +202,16 @@
                          <span class="checkmark"></span>
                        </label>
                      </div>
-                     @foreach(explode(',', $car->year) as $key => $year)
-                         <div class="years">
-                           <input type="radio" name="req_year_1" value="{{$year}}" id="yy-{{$year}}">
-                           <label class="input_container_radio" for="yy-{{$year}}">{{$year}}
-                             <span class="checkmark"></span>
-                           </label>
-                         </div>
-                     @endforeach
+                     
+                    @foreach(explode(',', $car->style) as $key => $style)
+                        <div class="years">
+                               <input type="radio" name="req_style" value="{{$style}}" id="yy-{{$style}}">
+                               <label class="input_container_radio" for="yy-{{$style}}">{{$style}}
+                                 <span class="checkmark"></span>
+                               </label>
+                        </div>
+                    @endforeach
+
                    </li>
 
                 </ul>
@@ -360,14 +362,14 @@
                                   Whatever is cheaper
                                </div>
                             </div>
-                            <div class="specific-detail">
+                            <!-- <div class="specific-detail">
                                <div class="detail-name">
                                   Packages
                                </div>
                                <div class="detail-value packages">
                                   None
                                </div>
-                            </div>
+                            </div> -->
                             <div class="specific-detail">
                                <div class="detail-name">
                                   Comment
@@ -380,7 +382,7 @@
                    </div>
                    <div class="bottom">
                       <div class="row">
-                         <div class="col-sm-6">
+                         <!--<<div class="col-sm-6">
                             <div class="specific-detail">
                                <div class="detail-name">
                                   Payment Method
@@ -392,7 +394,7 @@
                                </div>
                             </div>
                          </div>
-                         <div class="col-sm-6">
+                         div class="col-sm-6">
                             <div class="specific-detail">
                                <div class="detail-name">
                                   ZIP Code
@@ -401,8 +403,8 @@
                                   99999
                                </div>
                             </div>
-                         </div>
-                      </div>
+                         </div> 
+                      </div>-->
                    </div>
                 </div>
              </div>

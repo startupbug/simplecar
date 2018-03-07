@@ -196,176 +196,194 @@
                    <strong>Style</strong>
                 </div>
                 <ul class='trims'>
-                   <li>
-                      <a class="not-sure" href="#">
-                         <div class='name'>Not sure</div>
-                         <div class='description'>
-                            Send me the best offers for this model
-                         </div>
-                      </a>
-                   </li>
-                   <li class='active'>
-                      <a href="#">
-                         <div class='name'>
-                            75th Anniversary 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            75th Anniversary 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            Altitude 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            Altitude 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class=''>
-                      <a href="#">
-                         <div class='name'>
-                            High Altitude 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            High Altitude 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Latitude 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Latitude 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Limited 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Limited 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            L Plus 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Overland 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Overland 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            3.2L 6cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Sport 4dr SUV
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Sport 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
-                   <li class='hidden'>
-                      <a href="#">
-                         <div class='name'>
-                            Trailhawk 4dr SUV 4WD
-                         </div>
-                         <div class='description'>
-                            2.4L 4cyl 9A
-                         </div>
-                      </a>
-                   </li>
+                <!--<li>
+                    <a class="not-sure" href="#">
+                       <div class='name'>Not sure</div>
+                       <div class='description'>
+                          Send me the best offers for this model
+                       </div>
+                    </a>
+                 </li> -->
+
+                    @foreach(explode(',', $car->req_style) as $key => $style)
+
+                         <li class='active'>
+                            <a href="#">
+                               <div class='name'>
+                                  {{$style}}
+                               </div>
+                              <!--  <div class='description'>
+                                  2.4L 4cyl 9A
+                               </div> -->
+                            </a>
+                         </li>
+
+                    @endforeach
+                <!-- 
+                 <li class='active'>
+                    <a href="#">
+                       <div class='name'>
+                          75th Anniversary 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+
+
+                 <li class=''>
+                    <a href="#">
+                       <div class='name'>
+                          75th Anniversary 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class=''>
+                    <a href="#">
+                       <div class='name'>
+                          Altitude 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class=''>
+                    <a href="#">
+                       <div class='name'>
+                          Altitude 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class=''>
+                    <a href="#">
+                       <div class='name'>
+                          High Altitude 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          High Altitude 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Latitude 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Latitude 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Limited 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Limited 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          L Plus 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Overland 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Overland 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          3.2L 6cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Sport 4dr SUV
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Sport 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li>
+                 <li class='hidden'>
+                    <a href="#">
+                       <div class='name'>
+                          Trailhawk 4dr SUV 4WD
+                       </div>
+                       <div class='description'>
+                          2.4L 4cyl 9A
+                       </div>
+                    </a>
+                 </li> -->
                 </ul>
-                 <button class='see-more-trims'>See more</button>
+                 <!--<button class='see-more-trims'>See more</button> -->
                  <input name="utf8" type="hidden" value="&#x2713;" />
                  <input type="hidden" name="authenticity_token" value="YWtZ/jFXcw8K0DfBttZXH1P+73nstvON3GcH1PLt9b2Ihg2ElkO3BdpJdYfDWl8JP6siKQ96LrX2NExlMUJVAg==" />
                  <div class="form-group hidden order_form_trim_id">
@@ -460,7 +478,7 @@
   <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_sell_res')}}" accept-charset="UTF-8" method="post">
 
                  <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Offer: </label>
-                   <input type="text" name="offer">
+                   <input type="number" name="offer">
                  </div>
 
                  <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Any additional comments or special requests?</label>

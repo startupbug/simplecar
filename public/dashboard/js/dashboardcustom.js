@@ -109,7 +109,7 @@ $(document).ready(function(){
 			//Doesn't exists
 			console.log("not exists");
 			ext_color_arr.push(extColor);
-			$("#extColorList").append('<li class="circle" style="background:'+extColor+'"><span></span><span class="glyphicon glyphicon-remove">x</span></li>');
+			$("#extColorList").append('<li class="circle" style="background:'+extColor+'"><span></span><span class="glyphicon glyphicon-remove"></span></li>');
 
 			$("#ext_color").val(ext_color_arr);
 			console.log(ext_color_arr);

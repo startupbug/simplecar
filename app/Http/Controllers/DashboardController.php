@@ -157,7 +157,7 @@ class DashboardController extends Controller
                   return '<img src='.asset('/public/dashboard/img/car_assets/'.$images[0]).' height="50" width="50" alt />';
            })->addColumn('action',
               function($modelz){
-                  return '<a href="'.route('edit_model_view', ['id'=> $modelz->model_id]).'"><button type="button" class="btn btn-success">Edit</button></a><a class="delModal" data-id="'.$modelz->model_id.'"><button type="button" class="btn btn-danger">Delete</button></a><a class="delModal" data-id="'.$modelz->model_id.'"><button type="button" class="btn btn-danger">Delete</button></a>';
+                  return '<a href="'.route('edit_model_view', ['id'=> $modelz->model_id]).'"><button type="button" class="btn btn-success">Edit</button></a><a class="delModal" data-id="'.$modelz->model_id.'"><button type="button" class="btn btn-danger">Delete</button></a>';
            })->make(true);
     }
 
@@ -254,8 +254,13 @@ class DashboardController extends Controller
 
     /* Dashboard Request Responses */
     public function request_responses($requestid){
-        //dd($requestid);
-         Seller_response::where('req_id', $requestid)->get();
-        return view('dashboard.request-responses');
+        
+        $data['sel_responses'] = Seller_response::join('users', 'seller_responses.user_id', '=', 'users.id')
+                                       ->join('profiles', 'seller_responses.user_id', '=', 'profiles.user_id')
+                                        ->where('seller_responses.req_id', $requestid)
+                                        ->get();
+        //dd($data['sel_responses']);
+
+        return view('dashboard.request-responses')->with($data);
     }
 }

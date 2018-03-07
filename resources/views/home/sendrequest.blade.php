@@ -14,7 +14,7 @@
   </ul>
 
   <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_req')}}" accept-charset="UTF-8" method="post">
-    <section id='content1' class="">
+    <section id='content1' class="hidden">
        <div class='container container-center'>
           <div class='row row-eq-height'>
              <div class='col-md-6'>
@@ -202,7 +202,7 @@
                          <span class="checkmark"></span>
                        </label>
                      </div>
-                     
+
                     @foreach(explode(',', $car->style) as $key => $style)
                         <div class="years">
                                <input type="radio" name="req_style" value="{{$style}}" id="yy-{{$style}}">
@@ -316,7 +316,7 @@
           </div>
        </div>
     </section>
-    <section id="content2" class="hidden">
+    <section id="content2" class="">
        <div class="container container-center">
           <div class="row row-eq-height">
              <div class="col-md-6">
@@ -382,6 +382,7 @@
                    </div>
                    <div class="bottom">
                       <div class="row">
+
                          <!--<<div class="col-sm-6">
                             <div class="specific-detail">
                                <div class="detail-name">
@@ -403,8 +404,9 @@
                                   99999
                                </div>
                             </div>
-                         </div> 
-                      </div>-->
+                         </div>-->
+
+                      </div>
                    </div>
                 </div>
              </div>

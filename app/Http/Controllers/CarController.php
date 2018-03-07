@@ -24,7 +24,7 @@ class CarController extends Controller
 {
     public function modelcar_dropdown(Request $request){
     	//return $request->input();
-    	
+
     	$brand_id = $request->input('brand_id');
 
     	$modelz = Modelz::where('brand_id', $brand_id)->get();
@@ -40,19 +40,19 @@ class CarController extends Controller
     	}else{
     		$html = '<option value="">No Models Found for this Car </option>';
     	}
-		
+
 		return \Response::json(array('success' => true, 'html' => $html), 200);
     }
 
     public function send_model_request(Request $request){
 
     	$modelz = Modelz::join('brands', 'brands.id', '=', 'models.brand_id')
-    					   ->select('models.id as model_id', 'brands.id as brandz_id', 'models.*', 'brands.*')	
-    					   ->where('brand_id', $request->input('brand_id'))    					  
+    					   ->select('models.id as model_id', 'brands.id as brandz_id', 'models.*', 'brands.*')
+    					   ->where('brand_id', $request->input('brand_id'))
     					   ->where('models.id', $request->input('model_id'))
     					   ->first();
         //dd($modelz);
-                          
+
     	return view('home.sendrequest')->with('car', $modelz);
     }
 
@@ -61,14 +61,14 @@ class CarController extends Controller
 
         /* Validation */
 
-       try{ 
+       try{
             $requestz = new Requestz();
             $requestz->brand_id = $request->input('brand_id');
             $requestz->user_id = Auth::user()->id;
             $requestz->req_year = $request->input('req_year');
             $requestz->req_style = $request->input('req_style');
             $requestz->req_ext_color = implode(',',$request->input('req_ext_color'));
-            $requestz->req_int_color = implode(',',$request->input('req_int_color'));        
+            $requestz->req_int_color = implode(',',$request->input('req_int_color'));
             $requestz->req_comment = $request->input('req_comment');
             $requestz->model_id = $request->input('model_id');
             $requestz->status = 0; //status 0 - requested
@@ -83,8 +83,8 @@ class CarController extends Controller
 
         }catch(\Exception $e){
             $this->set_session('Request Couldnot be Submitted.'.$e->getMessage(), false);
-            return redirect()->route('home');           
-        }               
+            return redirect()->route('home');
+        }
        // dd($request->input());
     }
 
@@ -102,10 +102,10 @@ class CarController extends Controller
         if(Auth::check() && Auth::user()->role_id == 2){
             //A user
             $data['user_requests']->where('users.id', Auth::user()->id);
-          
+
         }
 
-        $data['user_requests'] = $data['user_requests']->get();                        
+        $data['user_requests'] = $data['user_requests']->get();
 
         return view('home.seller_reqs')->with($data);
     }
@@ -137,7 +137,7 @@ class CarController extends Controller
     }
 
     public function submit_sell_res(Request $request){
-        
+
         /* Validation */
 
         try{
@@ -147,7 +147,7 @@ class CarController extends Controller
 
             /* Getting Sellers Details to be sent in Email */
             $email_content = User::join('profiles', 'profiles.user_id', '=', 'users.id')
-                             ->select('users.id as user_id', 'profiles.id as profile_id', 'users.name', 'users.email', 
+                             ->select('users.id as user_id', 'profiles.id as profile_id', 'users.name', 'users.email',
                                 'profiles.contact', 'profiles.address', 'profiles.city')
                              ->where('profiles.user_id', $sel_res->user_id)
                              ->first();
@@ -158,9 +158,9 @@ class CarController extends Controller
 
             $temp = User::where('id', $req_user->user_id)->first(['email']);
 
-            $user_email = $temp->email;    
+            $user_email = $temp->email;
 
-            /* END */ 
+            /* END */
 
             $result = Mail::queue('emails.seller_response', ['seller_name' => $email_content->name
                 ,'sell_email'=>$email_content->email,'sell_contact'=>$sel_res->contact,'sel_comment'=>$sel_res->sel_comment], function ($m) use ($user_email) {
@@ -177,11 +177,11 @@ class CarController extends Controller
                $this->set_session('Offer couldnot be Sent.', false);
             }
 
-            return redirect()->route('deal_model_seller', ["id" => $sel_res->req_id]);            
+            return redirect()->route('deal_model_seller', ["id" => $sel_res->req_id]);
 
         }catch(\Exception $e){
             $this->set_session('Request Couldnot be Submitted.'.$e->getMessage(), false);
-            return redirect()->route('deal_model_seller', ["id" => $sel_res->req_id]);              
+            return redirect()->route('deal_model_seller', ["id" => $sel_res->req_id]);
         }
 
     }

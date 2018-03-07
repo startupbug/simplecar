@@ -7,18 +7,18 @@
      <li id="options" class='active'>
         <span class="translation_missing" title="translation missing: en.application.layout.options, model: Order form, models: Order form, Model: Order Form, Models: Order Form">SEND Offer</span>
      </li>
-     <!-- <li class='dash'></li> -->
+     <li class='dash'></li>
      <li id="offers">
         <span class="translation_missing" title="translation missing: en.application.layout.offers, model: Order form, models: Order form, Model: Order Form, Models: Order Form"></span>
      </li>
   </ul>
 
   <!-- <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_req')}}" accept-charset="UTF-8" method="post"> -->
-    <section id='content1' class="">
+    <section id='content1' class="hidden">
        <div class='container container-center'>
           <div class='row row-eq-height'>
              <div class='col-md-6'>
-                @include('partials.error_section') 
+                @include('partials.error_section')
                 <div class='config-wrapper'>
                    <div class='galleries'>
                       <div class='carousel slide' data-ride='carousel' id='carousel-cars-79103'>
@@ -139,7 +139,7 @@
                          <h5>2017</h5>
                           @if(isset($car->brand_name) && isset($car->model_name))
                             <h3>{{$car->brand_name}}<strong>  {{$car->model_name}}</strong></h3>
-                          @endif 
+                          @endif
 
                          <h4>75th Anniversary 4dr SUV<small>2.4L 4cyl 9A</small></h4>
                       </div>
@@ -179,10 +179,10 @@
              <div class='col-md-4 options-form'>
                 @if(isset($car->brand_name) && isset($car->model_name))
                  <h1>{{$car->brand_name}} {{$car->model_name}}</h1>
-                @endif 
+                @endif
                 <br>
 
-                @foreach(explode(',', $car->req_year) as $key => $req_year) 
+                @foreach(explode(',', $car->req_year) as $key => $req_year)
                     <div class="years">
                       <!-- <input type="radio" name="req_year" value="{{$req_year}}" @if($key=="0")checked="checked"@endif id="y-{{$req_year}}"> -->
                       <label class="container_radio" for="y-{{$req_year}}">{{$req_year}}
@@ -192,7 +192,7 @@
                 @endforeach
 
                 <div class='label-lg'>
-                   
+
                    <strong>Style</strong>
                 </div>
                 <ul class='trims'>
@@ -219,169 +219,7 @@
                          </li>
 
                     @endforeach
-                <!-- 
-                 <li class='active'>
-                    <a href="#">
-                       <div class='name'>
-                          75th Anniversary 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
 
-
-                 <li class=''>
-                    <a href="#">
-                       <div class='name'>
-                          75th Anniversary 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class=''>
-                    <a href="#">
-                       <div class='name'>
-                          Altitude 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class=''>
-                    <a href="#">
-                       <div class='name'>
-                          Altitude 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class=''>
-                    <a href="#">
-                       <div class='name'>
-                          High Altitude 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          High Altitude 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Latitude 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Latitude 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Limited 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Limited 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          L Plus 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Overland 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Overland 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          3.2L 6cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Sport 4dr SUV
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Sport 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li>
-                 <li class='hidden'>
-                    <a href="#">
-                       <div class='name'>
-                          Trailhawk 4dr SUV 4WD
-                       </div>
-                       <div class='description'>
-                          2.4L 4cyl 9A
-                       </div>
-                    </a>
-                 </li> -->
                 </ul>
                  <!--<button class='see-more-trims'>See more</button> -->
                  <input name="utf8" type="hidden" value="&#x2713;" />
@@ -412,9 +250,9 @@
                  </div>
                  <div class="form-group check_boxes optional order_form_exterior_colors">
                    <input type="hidden" name="order_form[exterior_colors][]" value="" />
-                   
+
                    @foreach(explode(',', $car->req_ext_color) as $key => $value)
-                     <span class="checkbox"> 
+                     <span class="checkbox">
                        <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="{{$value}}" name="req_ext_color[]" id="order_form_exterior_colors_{{$value}}" />
                        <label class="collection_check_boxes" for="order_form_exterior_colors_{{$value}}"></label>
                      </span>
@@ -458,7 +296,7 @@
                  <div class="form-group check_boxes optional order_form_interior_colors">
                    <input type="hidden" name="order_form[interior_colors][]" value="" />
 
-                   @foreach(explode(',', $car->req_int_color) as $key => $value)                           
+                   @foreach(explode(',', $car->req_int_color) as $key => $value)
                      <span class="checkbox">
                        <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="{{$value}}" name="req_int_color[]" id="order_form_interior_colors_{{$value}}" />
                        <label class="collection_check_boxes" for="order_form_interior_colors_{{$value}}"></label>
@@ -475,26 +313,28 @@
                    </span> -->
                  </div>
 
-  <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_sell_res')}}" accept-charset="UTF-8" method="post">
+                <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_sell_res')}}" accept-charset="UTF-8" method="post">
 
-                 <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Offer: </label>
-                   <input type="number" name="offer">
+                 <div class="form-group text optional order_form_comment">
+                   <label class="text optional control-label text-left" for="order_form_comment"><b>Offer: </b></label>
+                   <input type="number" class="form-control" name="offer">
                  </div>
 
-                 <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Any additional comments or special requests?</label>
-
-                     <textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control form-control" name="sel_comment" id="order_form_comment"></textarea>
-                 
+                 <div class="form-group text optional order_form_comment">
+                   <label class="text optional control-label" for="order_form_comment">
+                     <b>Any additional comments or special requests?</b>
+                   </label>
+                   <textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control" name="sel_comment" id="order_form_comment"></textarea>
                  </div>
                  <input type="hidden" name="_token" value="{{Session::token()}}">
                  <input type="hidden" name="req_id" value="{{$car->requests_id}}">
                  <input type="submit" name="submit" value="Send Offer to User" class="btn s_button"/>
-    </form>
+               </form>
              </div>
           </div>
        </div>
     </section>
-    <section id="content2" class="hidden">
+    <section id="content2" class="">
        <div class="container container-center">
           <div class="row row-eq-height">
              <div class="col-md-6">
@@ -596,14 +436,14 @@
                       <!--<form class="simple_form new_user_identity" id="new_user_identity" action="#" accept-charset="UTF-8" method="post"> -->
                          <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="F31CyTMrl97xhWkgFF8zLe2u4Fvyez+D66R3VzqpUdPmdODF5BA2jKMS2jH8BBJNhtckLCCPL9QiwsGglju1kA==">
                          <div class="form-group email required user_identity_email">
-                            <input class="string email required form-control form-control form-control" required="required" aria-required="true" placeholder="Email" type="email" name="user_identity[email]" 
-                            value="@if(Auth::check()){{Auth::user()->email}}@endif" 
+                            <input class="string email required form-control form-control form-control" required="required" aria-required="true" placeholder="Email" type="email" name="user_identity[email]"
+                            value="@if(Auth::check()){{Auth::user()->email}}@endif"
                             id="user_identity_email">
                             <p class="help-block">(Confirm your Email Address)</p>
                          </div>
                          <input type="hidden" name="brand_id" value="{{$car->brandz_id}}" />
                          <input type="hidden" name="model_id" value="{{$car->model_id}}" />
-                         <input type="hidden" name="_token" value="{{Session::token()}}" /> 
+                         <input type="hidden" name="_token" value="{{Session::token()}}" />
                          <input type="submit" name="commit" value="Get best offers" class="btn btn-lg btn-block" data-disable-with="Get best offers">
                       </form>
                    </div>
@@ -614,4 +454,4 @@
     </section>
   <!--</form>-->
 
-@endsection    
+@endsection

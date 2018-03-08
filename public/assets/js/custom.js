@@ -21,6 +21,23 @@ function changepage() {
 	$( "#options" ).removeClass( "active" );
 }
 
+$("#options").click(function(){
+   $(this).addClass("active");
+   $("#content1").removeClass("hidden");
+
+   $("#offers").removeClass("active");
+	 $("#content2").addClass("hidden");
+});
+
+$("#offers").click(function(){
+   $("#options").removeClass("active");
+   $("#content1").addClass("hidden");
+
+   $(this).addClass("active");
+	 $("#content2").removeClass("hidden");
+});
+
+
 
 $("#deal_offer").click(function(){
    $(this).addClass("active");
@@ -14619,8 +14636,8 @@ $(function() {
       id = $('.order_form_exterior_colors input.check_boxes').first().val();
     }
 
-    $('.carousel').addClass('hidden');
-    $('#carousel-cars-' + id).removeClass('hidden');
+    // $('.carousel').addClass('hidden');
+    // $('#carousel-cars-' + id).removeClass('hidden');
 
     Stickyfill.rebuild();
   });

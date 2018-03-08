@@ -20,13 +20,17 @@
              <div class='col-md-6'>
                 <div class='config-wrapper'>
                    <div class='galleries'>
-                      <div class='carousel slide' data-ride='carousel' id='carousel-cars-79103'>
+                      <div class='carousel slide' data-ride='carousel' id=''>
                          <ol class='carousel-indicators'>
                             <li class='active' data-slide-to='0' data-target='#carousel-cars-79103'></li>
                          </ol>
                          <div class='carousel-inner' role='listbox'>
                             <div class='active item'>
-                               <img src="{{ asset('public/assets/images/uploads/41gO474olhL.jpg') }}" alt="41go474olhl" />
+                              @if(isset($car->car_image))
+                                 <img src="{{asset('/public/dashboard/img/car_assets/'.$car->car_image)}}" alt="" />
+                              @endif
+
+
                             </div>
                          </div>
                          <a class='left carousel-control' data-slide='prev' href='#carousel-cars-79103' role='button'>
@@ -322,7 +326,7 @@
              <div class="col-md-6">
                 <div class="gallery">
                     @if(isset($car->car_image))
-                       <img class="img-responsive" src="{{asset('/public/dashboard/img/car_assets/'.$car->car_image)}}" alt="" />
+                       <img class="img-responsive" style="margin: auto;" src="{{asset('/public/dashboard/img/car_assets/'.$car->car_image)}}" alt="" />
                     @endif
                 </div>
                 <div class="specification">
@@ -403,8 +407,8 @@
                                   99999
                                </div>
                             </div>
-                         </div> 
-                      </div>-->
+                         </div>-->
+                      </div>
                    </div>
                 </div>
              </div>
@@ -430,11 +434,11 @@
                          <input type="hidden" name="_token" value="{{Session::token()}}" />
 
                          @if(Auth::check())
-                            <input type="submit" name="commit" value="Get best offers" class="btn btn-lg btn-block" data-disable-with="Get best offers">                         
+                            <input type="submit" name="commit" value="Get best offers" class="btn btn-lg btn-block" data-disable-with="Get best offers">
                          @else
                             <a href="{{route('register_index')}}"><button type="button" name="commit" value="Please Login to Send Request" class="btn btn-lg btn-block" data-disable-with="Get best offers"> Please Login to Send Request</a>
                          @endif
-                         
+
 
                       </form>
                    </div>

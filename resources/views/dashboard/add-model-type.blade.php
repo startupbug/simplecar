@@ -100,6 +100,7 @@
 				    <label class="form-check-label" for="exampleCheck1">Check me out</label>
 				  </div> -->
 				  <input type="hidden" name="_token" value="{{Session::token()}}">
+
 				  <button type="submit" class="btn btn-primary">Add Brand</button>
 				</form>
       	 </div>
@@ -165,6 +166,7 @@
 				    <label for="exampleInputEmail1">Additional Comment</label>
 				    <textarea name="comment" id="comment"></textarea>
 					  <input type="hidden" name="_token" value="{{Session::token()}}">
+                    <br>
 					  <button type="submit" class="btn btn-primary">Add Model</button>
 
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->

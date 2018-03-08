@@ -20,6 +20,8 @@ use App\Seller_response;
 
 use App\User;
 
+use App\Brand;
+
 class CarController extends Controller
 {
     public function modelcar_dropdown(Request $request){
@@ -96,8 +98,8 @@ class CarController extends Controller
                                 ->join('models', 'requests.model_id', '=', 'models.id')
                                 ->join('users', 'users.id', '=', 'requests.user_id')
                                 ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'users.name as user_name');
-
-
+        
+        $data['brands'] = Brand::all();
 
         if(Auth::check() && Auth::user()->role_id == 2){
             //A user
@@ -134,6 +136,35 @@ class CarController extends Controller
                                         ->where('seller_responses.req_id', $id)
                                         ->get();
         return view('home.sendrequest_user')->with($data);
+    }
+
+    //Seller-user request filter
+    public function sel_reqs_filter(Request $request){
+       // dd($request->input());
+        //Getting all Requests
+        $data['user_requests'] = Requestz::join('brands', 'requests.brand_id', '=', 'brands.id')
+                                ->join('models', 'requests.model_id', '=', 'models.id')
+                                ->join('users', 'users.id', '=', 'requests.user_id')
+                                ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'users.name as user_name');
+        
+        $data['brands'] = Brand::all();
+
+        /* Filters */
+        if($request->has('brand_id')){
+            $data['user_requests']->where('requests.brand_id', $request->input('brand_id'));
+        }
+
+        if($request->has('model_id')){
+            $data['user_requests']->where('requests.model_id', $request->input('model_id'));
+        }
+
+        if($request->has('year')){
+            $data['user_requests']->where('requests.req_year', $request->input('year'));
+        }
+
+        $data['user_requests'] = $data['user_requests']->get(); 
+        //dd($data['user_requests']);
+        return view('home.seller_reqs')->with($data);         
     }
 
     public function submit_sell_res(Request $request){

@@ -10,7 +10,7 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Add Model and Type Menu</li>
+        <li class="breadcrumb-item active"> Models and Types</li>
       </ol>
       <!-- Icon Cards-->
       <div class="row">
@@ -63,6 +63,7 @@
             </a>
           </div>
         </div>
+        </div>
         <!--<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
@@ -100,9 +101,6 @@
                  <th>Brand</th>
                  <th>Model Name</th>
                  <th>Year</th>
-                 <th>Style</th>
-                 <th>Exterior Color</th>
-                 <th>Interior Color</th>
                  <th>Comment</th>
                  <th>Action</th>
              </tr>
@@ -110,7 +108,7 @@
           </table>  
 
 
-      </div>
+   
 
         </div>
         <div class="col-lg-4">

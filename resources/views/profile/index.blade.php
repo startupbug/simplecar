@@ -56,12 +56,12 @@
                                       </label>
                                       <input class="string required form-control form-control form-control" autofocus="autofocus"  aria-required="true" type="text" value="{{isset($profile->city) ? $profile->city:''}}" name="city" id="_user_identity_city" />
                                    </div>
-                                   <div class="form-group required  col-sm-5">
+                                   <!--<div class="form-group required  col-sm-5">
                                        <label class="required control-label" for="_user_identity_area">
                                          <abbr title="required">*</abbr> Phone
                                        </label>
                                        <input class="string required form-control form-control form-control" autofocus="autofocus"  aria-required="true" type="text" name="contact" id="_user_identity_area" />
-                                   </div>
+                                   </div> -->
                                  </div>
                                  <div class='col-sm-10 col-sm-offset-1' align="right">
                                      <input type="hidden" name="_token" value="{{Session::token()}}">
@@ -87,23 +87,24 @@
                       <div class='details'>
                          <div class='row'>
                             <div class='col-sm-12  center-div'>
-                              <form class="simple_form user_identity" action="#" accept-charset="UTF-8" method="post">
+                              <form class="simple_form user_identity" action="{{route('pass_post')}}" action="#" id="changePasswordForm" accept-charset="UTF-8" method="post">
                                  <div class='form-inputs'>
                                    <div class="form-group password required user_identity_password col-sm-5 col-sm-offset-1">
                                       <label class="password required control-label" for="_user_identity_password">
                                         <abbr title="required">*</abbr> Old Password
                                       </label>
-                                      <input class="password required form-control form-control" required="required" aria-required="true" type="password" name="password" id="_user_identity_password" />
+                                      <input class="password required form-control form-control" required="required" aria-required="true" type="password" name="oldpassword" id="_user_identity_password" />
                                    </div>
                                    <div class="form-group password required user_identity_password col-sm-5">
                                       <label class="password required control-label" for="_user_identity_conf_password">
                                         <abbr title="required">*</abbr> New Password
                                       </label>
-                                      <input class="password required form-control form-control" required="required" aria-required="true" type="password" name="conf_password" id="_user_identity_conf_password" />
+                                      <input class="password required form-control form-control" required="required" aria-required="true" type="password" name="newpassword1" id="_user_identity_conf_password" />
                                    </div>
                                  </div>
                                  <div class='col-sm-10 col-sm-offset-1' align="right">
-                                    <input type="submit" name="commit" value="Update" class="btn btn-default" data-disable-with="Sign up" />
+                                    <input type="hidden" name="_token" value="{{Session::token()}}">
+                                    <input type="submit" name="commit" value="Change Password" class="btn btn-default" data-disable-with="Sign up" />
                                  </div>
                               </form>
                             </div>

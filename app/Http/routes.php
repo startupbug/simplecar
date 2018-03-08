@@ -95,6 +95,9 @@ Route::post('/submit_req', 'CarController@submit_req')->name('submit_req');
 /* Seller Request Page */
 Route::get('/sel_reqs',  'CarController@sel_reqs')->name('sel_reqs');
 
+/*Seller Request Page Filter*/
+Route::post('/sel_reqs-filter',  'CarController@sel_reqs_filter')->name('sel_reqs_filter');
+
 /* Seller request page of Model Single Contact Page */
 Route::get('/deal-model-seller/{id}',  'CarController@deal_model_seller')->name('deal_model_seller');
 
@@ -112,3 +115,7 @@ Route::get('/profile',  'ProfileController@index')->name('profile');
 Route::post('/profile_edit_submit', 'ProfileController@profile_edit_submit')->name('profile_edit_submit');
 
 /* Change Password Routes */
+Route::post('/pass_post', 'AuthenticationController@pass_post')->name('pass_post');
+
+/* single_dash_modeldetail */
+Route::get('/model-detail/{id}', 'DashboardController@single_dash_modeldetail')->name('single_dash_modeldetail');

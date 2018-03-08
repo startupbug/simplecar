@@ -148,7 +148,7 @@ class DashboardController extends Controller
 
            $modelz = Modelz::join('brands', 'brands.id', '=', 'models.brand_id')
               ->select('models.id as model_id', 'models.car_image as image', 'brands.brand_name', 'models.model_name', 'models.year', 
-                'models.style', 'models.ext_color', 'models.int_color', 'models.comment')
+                'models.comment')
               ->get();
 
            return Datatables::of($modelz)->editColumn('image',
@@ -157,7 +157,7 @@ class DashboardController extends Controller
                   return '<img src='.asset('/public/dashboard/img/car_assets/'.$images[0]).' height="50" width="50" alt />';
            })->addColumn('action',
               function($modelz){
-                  return '<a href="'.route('edit_model_view', ['id'=> $modelz->model_id]).'"><button type="button" class="btn btn-success">Edit</button></a><a class="delModal" data-id="'.$modelz->model_id.'"><button type="button" class="btn btn-danger">Delete</button></a>';
+                  return '<a href="'.route('edit_model_view', ['id'=> $modelz->model_id]).'"><button type="button" class="btn btn-success">Edit</button></a><a class="delModal" data-id="'.$modelz->model_id.'"><button type="button" class="btn btn-danger">Delete</button></a><a target="_blank" href="'.route('single_dash_modeldetail', ['id'=> $modelz->model_id]).'" class=""><button type="button" class="btn btn-success">View</button></a>';
            })->make(true);
     }
 
@@ -262,5 +262,18 @@ class DashboardController extends Controller
         //dd($data['sel_responses']);
 
         return view('dashboard.request-responses')->with($data);
+    }
+
+    //Single Model Details
+    public function single_dash_modeldetail($model_id){
+
+      $data['brands'] = Brand::all();
+
+      $data['modelz'] = Modelz::join('brands', 'brands.id', '=', 'models.brand_id')
+                              ->select('models.id as model_id', 'models.brand_id as brand_id', 'models.car_image as image', 'brands.brand_name', 'models.model_name', 'models.year', 'models.style', 'models.ext_color', 'models.int_color', 'models.comment')
+                              ->where('models.id', $model_id)
+                              ->first();
+      
+      return view('dashboard.single-model')->with($data);
     }
 }

@@ -73,9 +73,6 @@ $(document).ready(function(){
 			  {data: 'brand_name', name: 'brand_name'},
 			  {data: 'model_name', name: 'model_name'},
 			  {data: 'year', name: 'year'},
-			  {data: 'style', name: 'style'},
-			  {data: 'ext_color', name: 'ext_color'},
-			  {data: 'int_color', name: 'int_color'},
 			  {data: 'comment', name: 'comment'},
 			  {data: 'action', name: 'action'},
 		  ]

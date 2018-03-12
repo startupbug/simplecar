@@ -23,7 +23,7 @@
               <th>Address</th>
               <th>City</th>
               <th>Offer</th>
-              <th>Comment</th>                  
+              <th>Comment</th>
             </tr>
           </thead>
         <tbody>
@@ -249,7 +249,7 @@
                          </li>
 
                     @endforeach
-                <!-- 
+                <!--
                  <li class='active'>
                     <a href="#">
                        <div class='name'>
@@ -507,8 +507,8 @@
 
   <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_sell_res')}}" accept-charset="UTF-8" method="post">
 
-                 <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Offer: </label>
-                   <input type="text" name="offer">
+                 <div class="form-group text optional order_form_comment"><label class="text optional control-label text-left" for="order_form_comment">Offer: </label>
+                   <input type="text" name="offer" class="text optional form-control form-control">
                  </div>
 
                  <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Any additional comments or special requests?</label>

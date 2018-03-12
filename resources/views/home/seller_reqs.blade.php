@@ -22,7 +22,7 @@
          <select class="required  form-control form-control"  name="model_id" id="generation_car_model_id">
                   <option value="">Select Model</option>
                <p id="modelDropdown">
-                   
+
                  </p>
          </select>
       </div>
@@ -50,7 +50,7 @@
                   <option value="2015">2015</option>
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
-                  <option value="2018">2018</option>                                                    
+                  <option value="2018">2018</option>
          </select>
       </div>
 
@@ -72,9 +72,9 @@
                      <div class="col-sm-4">
                      @if(Auth::user()->role_id == 1)
                         <a class="thumbnail" href="{{route('deal_model_seller', ['id' => $request->requests_id])}}">
-                     @else(Auth::user()->role_id == 2) 
+                     @else(Auth::user()->role_id == 2)
                         <a class="thumbnail" href="{{route('deal_model_user', ['id' => $request->requests_id])}}">
-                     @endif      
+                     @endif
                            <div class="badge-wrapper"></div>
                               @if(isset($request->car_image))
                                  <img class="img-responsive" src="{{asset('/public/dashboard/img/car_assets/'.$request->car_image)}}" alt="Covered">
@@ -99,7 +99,7 @@
                   @endforeach
                @else
                   <h1>No Requests Found</h1>
-               @endif   
+               @endif
             <!--
             <div class="col-sm-4">
                <a class="thumbnail plus" href="/">

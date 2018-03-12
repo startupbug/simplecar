@@ -7,16 +7,12 @@
      <li id="options" class='active'>
         <span class="translation_missing" title="translation missing: en.application.layout.options, model: Order form, models: Order form, Model: Order Form, Models: Order Form">SEND Offer</span>
      </li>
-     <li class='dash'></li>
-     <li id="offers">
-        <span class="translation_missing" title="translation missing: en.application.layout.offers, model: Order form, models: Order form, Model: Order Form, Models: Order Form"></span>
-     </li>
   </ul>
 
   <!-- <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_req')}}" accept-charset="UTF-8" method="post"> -->
     <section id='content1' class="hidden">
        <div class='container container-center'>
-          <div class='row row-eq-height'>
+          <div class='row row-eq-height' >
              <div class='col-md-6'>
                 @include('partials.error_section')
                 <div class='config-wrapper'>
@@ -342,7 +338,7 @@
     </section>
     <section id="content2" class="">
        <div class="container container-center">
-          <div class="row row-eq-height">
+          <div class="row row-eq-height" style="padding-bottom: 25px;">
              <div class="col-md-6">
                 <div class="gallery">
                    <img class="img-responsive" src="{{ asset('public/assets/images/uploads/41gO474olhL.jpg') }}" alt="Covered">

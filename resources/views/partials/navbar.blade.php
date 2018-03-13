@@ -73,8 +73,8 @@
          <ul class='nav navbar-nav'>
             <li><a href="index.php#how_it_works">How it works</a></li>
             <li><a href="index.php#reviews">Reviews</a></li>
-            <li><a href="http://info.simplecar.co/category/best-car-deals">Best deals</a></li>
-            <li><a href="http://info.simplecar.co/category/tips-and-tricks-on-car-buying">Car buying tips</a></li>
+            <!-- <li><a href="http://info.simplecar.co/category/best-car-deals">Best deals</a></li>
+            <li><a href="http://info.simplecar.co/category/tips-and-tricks-on-car-buying">Car buying tips</a></li> -->
             <!-- If seller show seller button -->
             @if(Auth::check() && (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 ))
                <li><a href="{{route('sel_reqs')}}">Seller Requests</a></li>

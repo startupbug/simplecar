@@ -341,7 +341,10 @@
           <div class="row row-eq-height" style="padding-bottom: 25px;">
              <div class="col-md-6">
                 <div class="gallery">
-                   <img class="img-responsive" src="{{ asset('public/assets/images/uploads/41gO474olhL.jpg') }}" alt="Covered">
+
+                  @if(isset($car->car_image))
+                     <img class="img-responsive" src="{{asset('/public/dashboard/img/car_assets/'.$car->car_image)}}"  alt="Covered"/>
+                  @endif
                 </div>
                 <!--<div class="specification">
                    <div class="top">

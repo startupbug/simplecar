@@ -603,6 +603,7 @@
     </div>
  </div>
  <div id='ready'>
+ 
     <h2>Ready to get started?</h2>
     <form class="simple_form form-inline model-selection" action="https://simplecar.co/generations" accept-charset="UTF-8" method="get">
        <input name="utf8" type="hidden" value="&#x2713;" />

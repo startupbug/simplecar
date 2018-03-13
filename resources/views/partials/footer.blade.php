@@ -69,6 +69,12 @@
            </div>
         </div>
       </div>
+      
+
+    <script type="text/javascript">
+     var base_url  = '{{ asset('') }}';
+    </script>
+
       <!-- jQuery -->
       <!-- <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script> -->
 <script src="https://code.jquery.com/jquery-1.12.4.js" charset="utf-8"></script>

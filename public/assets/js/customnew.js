@@ -4,17 +4,19 @@
 
 /* Script Beginning */
 
-var base_url  = '/simplecar/backend/';
+var base_url  = base_url;
+
+
 
 $(document).ready(function(){
 
-	console.log("Custom JS ");
+	console.log("Custom JS ==" + base_url);
 
 	/* Login Form Ajax Submit */
 
 	$("#login_form").on('submit', function(e){
 	      e.preventDefault();
-	      base_url  = '/simplecar/backend/';
+	      //base_url  = '/simplecar/backend/';
 	      
 	      console.log('login form');
 

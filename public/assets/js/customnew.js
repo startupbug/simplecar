@@ -65,7 +65,7 @@ $(document).ready(function(){
 	})*/
 
 	//Home Page Brand Ajax Request for Model
-	$("#generation_car_make_id").on('change', function(e){
+	$("#generation_car_make_id").on('click', function(e){
 		  e.preventDefault();
 		  console.log("Change event");
 

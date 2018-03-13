@@ -6,7 +6,7 @@
                  <div class='top'>
                     <div class='row'>
                        <div class='col-md-2'>
-                          <a class="brand" href="index.html"><span class='logo'></span>
+                          <a class="brand" href="{{route('home')}}"><span class='logo'></span>
                           <span class='title'>
                           SimpleCar
                           </span>
@@ -16,22 +16,22 @@
                           <ul class='primary'>
                              <li><a href="index.php#how_it_works">How it works</a></li>
                              <li><a href="index.php#reviews">Reviews</a></li>
-                             <li><a href="#">Best deals</a></li>
-                             <li><a href="#">Car buying tips</a></li>
+                             <!--<li><a href="#">Best deals</a></li>
+                             <li><a href="#">Car buying tips</a></li> -->
                           </ul>
                        </div>
                        <div class='col-md-2'>
                           <ul class='secondary'>
-                             <li>
+                             <!-- <li>
                                 <a class='btn-sign-in' data-target='#signInModal' data-toggle='modal' href='#'>
                                 Log in
                                 </a>
-                             </li>
+                             </li> -->
                           </ul>
                        </div>
                     </div>
                  </div>
-                 <div class='bottom'>
+                 <!--<div class='bottom'>
                     <div class='row'>
                        <div class='col-md-4 made-with-love'>
                           Made with &#10084; in sunny California
@@ -64,13 +64,11 @@
                           </a>
                        </div>
                     </div>
-                 </div>
+                 </div> -->
               </div>
            </div>
         </div>
       </div>
-      
-
     <script type="text/javascript">
      var base_url  = '{{ asset('') }}';
     </script>

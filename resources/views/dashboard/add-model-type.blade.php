@@ -110,19 +110,19 @@
 	      	   <form id="model" action="{{route('model_submit')}}" method="post" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Model Name</label>
-				    <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Latest">
+				    <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Civic">
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Year</label>
-				    <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016, 2015">
+				    <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016,2015">
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Style</label>
-				    <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+				    <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Sleek,Stylish">
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 

@@ -128,7 +128,7 @@
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Exterior Color</label>
-				    <input type="color" name="ext_color_prev" value="" id="" placeholder="">
+				    <input type="color" name="ext_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
             <input type="hidden" name="ext_color" id="ext_color" value="">
             <ul id="extColorList">
 
@@ -138,7 +138,7 @@
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Interior Color</label>
-				    <input type="color" name="int_color_prev" value="" id="" placeholder="">
+				    <input type="color" name="int_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
             <input type="hidden" name="int_color" id="int_color" value="">
             <ul id="intColorList">
 

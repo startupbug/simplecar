@@ -44,13 +44,13 @@
 
              <div class="form-group">
                <label for="exampleInputEmail1">Exterior Color</label>
-               <input type="color" name="ext_color" class="form-control" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
+               <input type="color" name="ext_color" class="form-control s_height_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
              </div>
 
              <div class="form-group">
                <label for="exampleInputEmail1">Interior Color</label>
-               <input type="color" name="int_color" class="form-control" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif" id="" placeholder="">
+               <input type="color" name="int_color" class="form-control s_height_color" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif" id="" placeholder="">
                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
              </div>
 

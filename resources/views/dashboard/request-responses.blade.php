@@ -13,59 +13,61 @@
         <li class="breadcrumb-item active">All Requests Responses</li>
       </ol>
 
-       @include('partials.error_section') 
+       @include('partials.error_section')
       <div class="row">
-        
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Request Responses</div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Seller Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
-                  <th>Address</th>
-                  <th>City</th>
-                  <th>Offer</th>
-                  <th>Comment</th>                  
-                </tr>
-              </thead>
-             <!--  <tfoot>
-                <tr>
-                  <th>Seller Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
-                  <th>Address</th>
-                  <th>City</th>
-                  <th>Offer</th>
-                  <th>Comment</th>
-                </tr>
-              </tfoot> -->
-              <tbody>
-              @foreach($sel_responses as $sel_response)
-                <tr>
-                  <td>{{$sel_response->name}}</td>
-                  <td>{{$sel_response->email}}</td>
-                  <td>{{$sel_response->contact}}</td>
-                  <td>{{$sel_response->address}}</td>
-                  <td>{{$sel_response->city}}</td>
-                   <td>{{$sel_response->offer}}</td>
-                    <td>{{$sel_response->sel_comment}}</td>
-                </tr>
-              @endforeach
-              </tbody>
-            </table>
+
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Request Responses</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Seller Name</th>
+                      <th>Email</th>
+                      <th>Contact</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th>Offer</th>
+                      <th>Comment</th>
+                    </tr>
+                  </thead>
+                 <!--  <tfoot>
+                    <tr>
+                      <th>Seller Name</th>
+                      <th>Email</th>
+                      <th>Contact</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th>Offer</th>
+                      <th>Comment</th>
+                    </tr>
+                  </tfoot> -->
+                  <tbody>
+                  @foreach($sel_responses as $sel_response)
+                    <tr>
+                      <td>{{$sel_response->name}}</td>
+                      <td>{{$sel_response->email}}</td>
+                      <td>{{$sel_response->contact}}</td>
+                      <td>{{$sel_response->address}}</td>
+                      <td>{{$sel_response->city}}</td>
+                       <td>{{$sel_response->offer}}</td>
+                        <td>{{$sel_response->sel_comment}}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div>
 
         <!--
          <div class="col-lg-6">
-           <h1>Add Brand</h1>             
+           <h1>Add Brand</h1>
         <form method="post" action="{{route('brand_post')}}" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Brand Name</label>
@@ -79,25 +81,25 @@
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div> 
+          </div>
           <input type="hidden" name="_token" value="{{Session::token()}}">
           <button type="submit" class="btn btn-primary">Add Brand</button>
         </form>
          </div>
          <div class="col-lg-6">
            <h1>Add Model</h1>
-         
+
              <form id="model" action="{{route('model_submit')}}" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Model Name</label>
             <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Latest">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Year</label>
             <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016, 2015">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
@@ -115,16 +117,16 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Interior Color</label>
             <input type="color" name="int_color" value="" id="" placeholder="">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Brand</label>
             <select name="brand_id">
-          
+
             </select>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
-          </div>          
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Car Image</label>
@@ -138,11 +140,11 @@
             <input type="hidden" name="_token" value="{{Session::token()}}">
             <button type="submit" class="btn btn-primary">Add Model</button>
 
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
-          </div>                            
-             </form>         
-         </div>        
-      </div> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+             </form>
+         </div>
+      </div>
       <!-- Area Chart Example
       <div class="card mb-3">
         <div class="card-header">

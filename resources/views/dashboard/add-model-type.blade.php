@@ -80,11 +80,11 @@
           </div>
         </div> -->
       </div>
-       @include('partials.error_section') 
+       @include('partials.error_section')
       <div class="row">
-                        
+
       	 <div class="col-lg-6">
-      	   <h1>Add Brand</h1>   	        
+      	   <h1>Add Brand</h1>
 				<form method="post" action="{{route('brand_post')}}" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Brand Name</label>
@@ -106,7 +106,7 @@
       	 </div>
       	 <div class="col-lg-6">
       	   <h1>Add Model</h1>
-     	   
+
 	      	   <form id="model" action="{{route('model_submit')}}" method="post" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Model Name</label>
@@ -131,7 +131,7 @@
 				    <input type="color" name="ext_color_prev" value="" id="" placeholder="">
             <input type="hidden" name="ext_color" id="ext_color" value="">
             <ul id="extColorList">
-              
+
             </ul>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
@@ -141,38 +141,38 @@
 				    <input type="color" name="int_color_prev" value="" id="" placeholder="">
             <input type="hidden" name="int_color" id="int_color" value="">
             <ul id="intColorList">
-              
-            </ul>            
+
+            </ul>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Brand</label>
-				    <select name="brand_id">
+				    <select name="brand_id" class="form-control">
 				      @foreach($brands as $brand)
 				        <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
  					    @endforeach
 				    </select>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-				  </div>				  
+				  </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Car Image</label>
-            <input type="file" name="car_image" value="" id="" placeholder="">
+            <input type="file" name="car_image" value="" id="" placeholder="" class="form-control">
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Additional Comment</label>
-				    <textarea name="comment" id="comment"></textarea>
+				    <textarea name="comment" id="comment" class="form-control" rows="5"></textarea>
 					  <input type="hidden" name="_token" value="{{Session::token()}}">
                     <br>
 					  <button type="submit" class="btn btn-primary">Add Model</button>
 
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-				  </div>				  			  				  
-	      	   </form>      	 
-      	 </div>      	 
+				  </div>
+	      	   </form>
+      	 </div>
       </div>
       <!-- Area Chart Example
       <div class="card mb-3">

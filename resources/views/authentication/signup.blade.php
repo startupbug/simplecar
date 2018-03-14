@@ -40,7 +40,7 @@
                                     <label class="email required control-label" for="_user_identity_email">
                                       <abbr title="required">*</abbr> User Role
                                     </label>
-                                    <select name="role_id">
+                                    <select name="role_id" class="required form-control form-control form-control">
                                     	<option value="1">Seller</option>
                                     	<option value="2">User</option>
                                     </select>
@@ -66,7 +66,7 @@
                             </form>
                             <div class='want-to-sign-up' align="center">
                               <p>By signing up you agree to Simplecar</p>
-                              <a href="index.html">Terms of Service & Policy</a>
+                              <a href="#">Terms of Service & Policy</a>
                             </div>
                           </div>
                        </div>

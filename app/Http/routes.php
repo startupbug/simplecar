@@ -74,7 +74,7 @@ Route::get('/dashboard/request-responses/{requestid}', 'DashboardController@requ
 Route::post('/login',  'AuthenticationController@login_post')->name('login_post');
 
 //Signup view
-Route::get('/register',  'AuthenticationController@register_index')->name('register_index'); 
+Route::get('/register',  'AuthenticationController@register_index')->name('register_index');
 
 //Signup Post
 Route::post('/register',  'AuthenticationController@register_post')->name('signup_post');

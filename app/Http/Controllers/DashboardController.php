@@ -123,7 +123,15 @@ class DashboardController extends Controller
             function($requests){
               $images = explode(',', $requests->image);
              return '<img src='.asset('/public/dashboard/img/car_assets/'.$images[0]).' height="50" width="50" alt />';
-           })->editColumn('status',
+           })->editColumn('req_ext_color',  function($requests){
+              
+             return '<p class="circle" style="background:'.$requests->req_ext_color.'"></p>';
+
+           })->editColumn('req_int_color',  function($requests){
+              
+             return '<p class="circle" style="background:'.$requests->req_int_color.'"></p>';
+
+           })->editColumn('status', 
             function($requests){
               
               if($requests->status>0){

@@ -41,6 +41,11 @@
     <!-- Custom scripts for this page-->
     <script src="{{ asset('public/dashboard/js/sb-admin-datatables.min.js') }}"></script>
 
+
+    <script type="text/javascript">
+      var base_urlz  = '{{ asset('') }}';
+    </script>
+
 <script
   src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"
   integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE="

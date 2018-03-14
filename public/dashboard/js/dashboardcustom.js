@@ -4,7 +4,7 @@
 
 /* Script Beginning */
 
-var base_url  = '/simplecar/backend/';
+var base_url  = base_urlz;
 
 $(document).ready(function(){
 	console.log("dashboard Custom");

@@ -46,14 +46,14 @@
                 <!--<div class="form-group">
                   <label for="exampleInputEmail1">Exterior Color</label>
                   <input type="color" name="ext_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div> -->
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Exterior Color</label>
                   <input type="color" name="ext_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
                   <input type="hidden" name="ext_color" id="ext_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif">
-                  <ul id="extColorList">
+                  <ul id="extColorList" class="color_style_ul">
                    @foreach(explode(',', $modelz->ext_color) as $key => $value)
 
                       <li class="circle" style="background:{{$value}}"><span></span><span data-id="{{$value}}" class="glyphicon glyphicon-remove delCol">x</span></li>
@@ -66,7 +66,7 @@
              <!--<div class="form-group">
                <label for="exampleInputEmail1">Exterior Color</label>
                <input type="color" name="ext_color" class="form-control s_height_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
-               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
              </div>  -->
 
             <div class="form-group">
@@ -84,7 +84,7 @@
              <!--<div class="form-group">
                <label for="exampleInputEmail1">Interior Color</label>
                <input type="color" name="int_color" class="form-control s_height_color" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif" id="" placeholder="">
-               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
              </div> -->
 
              <div class="form-group">
@@ -120,7 +120,7 @@
              </div>
           </form>
         </div>
-
+      </div>
 
         <!--
          <div class="col-lg-6">
@@ -129,8 +129,8 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Brand Name</label>
             <input type="text" class="form-control" name="brand_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter model Name here">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          
           <!--<div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
@@ -150,31 +150,31 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Model Name</label>
             <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Latest">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Year</label>
             <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016, 2015">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Style</label>
             <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Exterior Color</label>
             <input type="color" name="ext_color" value="" id="" placeholder="">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Interior Color</label>
             <input type="color" name="int_color" value="" id="" placeholder="">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
@@ -182,13 +182,13 @@
             <select name="brand_id">
 
             </select>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Car Image</label>
             <input type="file" name="car_image" value="" id="" placeholder="">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
@@ -197,12 +197,12 @@
             <input type="hidden" name="_token" value="{{Session::token()}}">
             <button type="submit" class="btn btn-primary">Add Model</button>
 
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
              </form>
          </div>
       </div>
-      <!-- Area Chart Example
+      Area Chart Example
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-area-chart"></i> Area Chart Example</div>
@@ -213,7 +213,7 @@
       </div>-->
       <!-- <div class="row">
         <div class="col-lg-8">
-          <!-- Example Bar Chart Card
+           Example Bar Chart Card
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
@@ -236,12 +236,12 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-          <!-- Card Columns Example Social Feed
+           Card Columns Example Social Feed
           <div class="mb-0 mt-4">
             <i class="fa fa-newspaper-o"></i> News Feed</div>
           <hr class="mt-2">
           <div class="card-columns">
-            <!-- Example Social Card
+             Example Social Card
             <div class="card mb-3">
               <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=610" alt="">
@@ -298,7 +298,7 @@
               </div>
               <div class="card-footer small text-muted">Posted 32 mins ago</div>
             </div>
-            <!-- Example Social Card
+            Example Social Card
             <div class="card mb-3">
               <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=180" alt="">
@@ -338,7 +338,7 @@
               </div>
               <div class="card-footer small text-muted">Posted 46 mins ago</div>
             </div>
-            <!-- Example Social Card
+             Example Social Card
             <div class="card mb-3">
               <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=281" alt="">
@@ -362,7 +362,7 @@
               </div>
               <div class="card-footer small text-muted">Posted 1 hr ago</div>
             </div>
-            <!-- Example Social Card
+            Example Social Card
             <div class="card mb-3">
               <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=185" alt="">
@@ -426,7 +426,7 @@
               <div class="card-footer small text-muted">Posted yesterday</div>
             </div>
           </div>
-          <!-- /Card Columns
+          /Card Columns
         </div>
         <div class="col-lg-4"> -->
           <!-- Example Pie Chart Card
@@ -438,7 +438,7 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-          <!-- Example Notifications Card
+          Example Notifications Card
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-bell-o"></i> Feed Example</div>
@@ -980,9 +980,9 @@
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div> -->
-    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+  </div>
 
 @endsection
 

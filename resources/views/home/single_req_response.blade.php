@@ -22,20 +22,33 @@
                       <div class='details'>
                          <div class='row'>
 
-                            <div class='col-sm-12  center-div'>
-                                  @include('partials.error_section')                             
+                            <div class='col-sm-10 s-text-size'>
+                                  @include('partials.error_section') 
+
+                              <div class="row">
+                                <label class="col-md-3">Seller Name : </label> {{$single_sel_responses->name}}
+                              </div>                            
                             
-                             Seller Name: {{$single_sel_responses->name}}
-                             <br>
-                             Seller Email: {{$single_sel_responses->email}}
-                             <br>
-                             Seller Contact: {{$single_sel_responses->contact}}
-                             <br>
-                             Seller Address: {{$single_sel_responses->address}}
-                             <br>
-                             City: {{$single_sel_responses->city}}
-                             <br>
-                             Comment: {{$single_sel_responses->sel_comment}}
+                              <div class="row">
+                                <label class="col-md-3">Seller Email : </label> {{$single_sel_responses->email}}
+                              </div>
+                           
+                              <div class="row">
+                                <label class="col-md-3">Seller Contact : </label> {{$single_sel_responses->contact}}
+                              </div>
+
+                              <div class="row">
+                                <label class="col-md-3">Seller Address : </label> {{$single_sel_responses->address}}
+                              </div>
+                            
+                              <div class="row">
+                                <label class="col-md-3">City : </label> {{$single_sel_responses->city}}
+                              </div>
+                             
+                              <div class="row">
+                                <label class="col-md-3">Comment : </label> {{$single_sel_responses->sel_comment}}
+                              </div>
+
                             </div>
                          </div>
                       </div>

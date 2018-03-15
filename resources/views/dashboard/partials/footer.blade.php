@@ -25,6 +25,7 @@
             <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
+
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
@@ -56,6 +57,42 @@
 
     <!-- Dashboard Custom JS -->
     <script src="{{ asset('public/dashboard/js/dashboardcustom.js') }}"></script>
+
+    <script>
+  
+      @if(isset($modelz))
+          if (top.location.pathname.indexOf("edit-model") >= 0){
+
+            var asd = '{{ $modelz->ext_color }}';  
+            console.log(asd.split(','));
+           // ext_color_arr.push(asd.split(','));
+
+            $.each(asd.split(','), function( index, value ) {
+              //alert( index + ": " + value );
+              ext_color_arr.push(value);
+            });
+
+            console.log(ext_color_arr);
+          }
+      @endif 
+
+      @if(isset($modelz))
+          if (top.location.pathname.indexOf("edit-model") >= 0){
+
+            var asdz = '{{ $modelz->int_color }}';  
+            console.log(asdz.split(','));
+           // ext_color_arr.push(asd.split(','));
+
+            $.each(asdz.split(','), function( index, value ) {
+              //alert( index + ": " + value );
+              int_color_arr.push(value);
+            });
+
+            console.log(int_color_arr);
+          }
+      @endif 
+
+    </script>
 
     <!-- Bootstrap Token JS -->
     <script src="{{ asset('public/dashboard/js/bootstrap-tokenfield.js') }}"></script>

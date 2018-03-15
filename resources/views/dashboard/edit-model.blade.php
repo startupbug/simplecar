@@ -55,7 +55,7 @@
                   <ul id="extColorList">
                    @foreach(explode(',', $modelz->ext_color) as $key => $value)
                 <li class="circle" style="background:{{$value}}"><span></span><span class="glyphicon glyphicon-remove"></span></li>
-                
+
                 <!-- <span class="checkbox">
                        <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="{{$value}}" name="req_ext_color[]" id="order_form_exterior_colors_{{$value}}" />
                        <label class="collection_check_boxes" for="order_form_exterior_colors_{{$value}}"></label>

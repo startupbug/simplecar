@@ -88,7 +88,7 @@
 				<form method="post" action="{{route('brand_post')}}" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Brand Name</label>
-				    <input type="text" class="form-control" name="brand_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter model Name here">
+				    <input type="text" class="form-control" name="brand_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter model Name here" required>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 				  <!--<div class="form-group">
@@ -110,19 +110,19 @@
 	      	   <form id="model" action="{{route('model_submit')}}" method="post" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Model Name</label>
-				    <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Civic">
+				    <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Civic" required>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Year</label>
-				    <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016,2015">
+				    <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016,2015" required>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Style</label>
-				    <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Sleek,Stylish">
+				    <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Sleek,Stylish" required>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 
@@ -158,7 +158,7 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Car Image</label>
-            <input type="file" name="car_image" value="" id="" placeholder="" class="form-control">
+            <input type="file" name="car_image" value="" id="" placeholder="" class="form-control" required>
             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
 

@@ -48,6 +48,12 @@ class CarController extends Controller
 
     public function send_model_request(Request $request){
 
+
+           if(Auth::user()->role_id == 3 || Auth::user()->role_id == 1){
+               $this->set_session('Admins and Sellers cannot submit Request.', false);
+               return redirect()->route('home');               
+           }
+           
     	$modelz = Modelz::join('brands', 'brands.id', '=', 'models.brand_id')
     					   ->select('models.id as model_id', 'brands.id as brandz_id', 'models.*', 'brands.*')
     					   ->where('brand_id', $request->input('brand_id'))
@@ -59,10 +65,11 @@ class CarController extends Controller
 
     public function submit_req(Request $request){
         //dd($request->input());
-
+       //dd(123);
         /* Validation */
 
        try{
+
             $requestz = new Requestz();
             $requestz->brand_id = $request->input('brand_id');
             $requestz->user_id = Auth::user()->id;

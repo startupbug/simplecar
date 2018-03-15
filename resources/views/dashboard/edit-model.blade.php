@@ -42,6 +42,7 @@
                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
              </div>
 
+
                 <!--<div class="form-group">
                   <label for="exampleInputEmail1">Exterior Color</label>
                   <input type="color" name="ext_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
@@ -50,33 +51,41 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Exterior Color</label>
-                  <input type="color" name="ext_color_prev" value="" id="" placeholder="">
+                  <input type="color" name="ext_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
                   <input type="hidden" name="ext_color" id="ext_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif">
                   <ul id="extColorList">
                    @foreach(explode(',', $modelz->ext_color) as $key => $value)
-                <li class="circle" style="background:{{$value}}"><span></span><span class="glyphicon glyphicon-remove"></span></li>
 
-                <!-- <span class="checkbox">
-                       <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="{{$value}}" name="req_ext_color[]" id="order_form_exterior_colors_{{$value}}" />
-                       <label class="collection_check_boxes" for="order_form_exterior_colors_{{$value}}"></label>
-                     </span> -->
+                      <li class="circle" style="background:{{$value}}"><span></span><span data-id="{{$value}}" class="glyphicon glyphicon-remove delCol">x</span></li>
+
                    @endforeach
                   </ul>
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
 
-          <!--    <div class="form-group">
+             <!--<div class="form-group">
                <label for="exampleInputEmail1">Exterior Color</label>
                <input type="color" name="ext_color" class="form-control s_height_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
-               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-             </div> -->
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+             </div>  -->
 
+            <div class="form-group">
+              <label for="exampleInputEmail1">Interior Color</label>
+              <input type="color" name="int_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
+              <input type="hidden" name="int_color" id="int_color" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif">
+              <ul id="intColorList" class="color_style_ul">
+                   @foreach(explode(',', $modelz->int_color) as $key => $value)
+                      <li class="circle" style="background:{{$value}}"><span></span><span data-id="{{$value}}" class="glyphicon glyphicon-remove delColInt">x</span></li>
+                   @endforeach
+              </ul>
+              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
 
-             <div class="form-group">
+             <!--<div class="form-group">
                <label for="exampleInputEmail1">Interior Color</label>
                <input type="color" name="int_color" class="form-control s_height_color" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif" id="" placeholder="">
-               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-             </div>
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+             </div> -->
 
              <div class="form-group">
                <label for="exampleInputEmail1">Brand</label>
@@ -974,4 +983,6 @@
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+
 @endsection
+

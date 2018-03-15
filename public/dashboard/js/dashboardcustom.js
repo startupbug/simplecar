@@ -6,6 +6,9 @@
 
 var base_url  = base_urlz;
 
+   	var int_color_arr = [];
+   	var ext_color_arr = [];
+   	var loadFlag = 0;
 $(document).ready(function(){
 	console.log("dashboard Custom");
 
@@ -91,14 +94,16 @@ $(document).ready(function(){
 			  ]
 		});
 
+
+	//Loading LoadJS for Edit Model Page
+		loadJS();
    /* Selecting Multiple Colors Exterior */
-   	var ext_color_arr = [];
 
 	$("[name='ext_color_prev']").change(function(e){
 		e.preventDefault();
 		var extColor = $(this).val();
 		console.log("extColor" + extColor);
-
+			console.log(loadFlag);
 		if(ext_color_arr.indexOf(extColor) >= 0){
 			//exists
 			console.log("exists");
@@ -110,12 +115,17 @@ $(document).ready(function(){
 
 			$("#ext_color").val(ext_color_arr);
 			console.log(ext_color_arr);
-			loadJS();
+
+			// if(loadFlag == 0){
+			// 	console.log(loadFlag);
+			// 	loadFlag = 1;
+				loadJS();
+			//}
 		}
 	});
 
    /* Selecting Multiple Colors Interior  */
-   	var int_color_arr = [];
+
 	$("[name='int_color_prev']").change(function(e){
 		e.preventDefault();
 		var intColor = $(this).val();
@@ -131,34 +141,63 @@ $(document).ready(function(){
 			$("#intColorList").append('<li class="circle2" style="background:'+intColor+'"><span data-id="'+intColor+'" class="glyphicon glyphicon-remove delColInt">x</span></li>');
 			$("#int_color").val(int_color_arr);
 			console.log(int_color_arr);
-			loadJS()
+			console.log(loadFlag);
+			//if(loadFlag == 0){
+				//console.log(loadFlag);
+				//loadFlag = 1;
+				loadJS();
+			//}
 		}
 	});
 
 	function loadJS(){
-		//del color exterior
+
+			//del color exterior
 			$(".delCol").click(function(e){
+
 				 e.preventDefault();
-		      console.log("color:::" + $(this).data('id'));
+
+		      		var ext_color = $('#ext_color').val();
+		      		ext_color = ext_color.split(',');
 					var removColor = $(this).data('id');
+					var index = ext_color.indexOf(removColor);
+					if (index > -1) {
+					    ext_color.splice(index, 1);
+					}
+
 					$(this).closest("li").remove();
-					//Popping Color from Array
-					ext_color_arr.pop(removColor);
-					//Updating input of ext Color
-					$("#ext_color").val(ext_color_arr);
+					$("#ext_color").val(ext_color);
 			});
 
 	   //delete color interior
 		 $(".delColInt").click(function(e){
+
 				e.preventDefault();
-				 console.log("int color:::" + $(this).data('id'));
+				 /*console.log("int color:::" + $(this).data('id'));
 				 var removColor_int = $(this).data('id');
 				 $(this).closest("li").remove();
 				 //Popping Color from Array
 				 int_color_arr.pop(removColor_int);
 				 //Updating input of ext Color
 				 $("#int_color").val(int_color_arr);
+				 */
+
+
+		      		var int_color = $('#int_color').val();
+		      		int_color = int_color.split(',');
+					var removColor = $(this).data('id');
+					var index = int_color.indexOf(removColor);
+					if (index > -1) {
+					    int_color.splice(index, 1);
+					}
+
+					$(this).closest("li").remove();
+					$("#int_color").val(int_color);
+
 		 });
+
 	}
+
+
 
 });

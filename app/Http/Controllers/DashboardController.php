@@ -196,7 +196,7 @@ class DashboardController extends Controller
            // dd($request->input());
             //Editing Model
               foreach($request->input() as $key => $value) {
-                  if($key != '_token'){
+                  if($key != '_token' && $key != 'ext_color_prev' && $key != 'int_color_prev'){
                      if($key != 'model_id'){
                           $modelz_edit->$key = $value;
                      }

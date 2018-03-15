@@ -135,7 +135,7 @@
                    </div>
                    <div class='specification'>
                       <div class='top'>
-                         <h5>2017</h5>
+                         <h5 class="boxYear">-Select Year</h5>
                           @if(isset($car->brand_name) && isset($car->model_name))
                             <h3>{{$car->brand_name}}<strong>  {{$car->model_name}}</strong></h3>
                           @endif
@@ -145,12 +145,22 @@
                       <div class='details'>
                          <div class='row'>
                             <div class='col-sm-7'>
+
+                               <div class='specific-detail'>
+                                  <div class='detail-name'>
+                                     Style
+                                  </div>
+                                  <div class='detail-value '>
+                                     <p class="boxStyle">Select style</p>
+                                  </div>
+                               </div>
+
                                <div class='specific-detail'>
                                   <div class='detail-name'>
                                      Exterior
                                   </div>
                                   <div class='detail-value exterior-colors'>
-                                     Whatever is cheaper
+                                     Select color
                                   </div>
                                </div>
                                <div class='specific-detail'>
@@ -158,7 +168,7 @@
                                      Interior
                                   </div>
                                   <div class='detail-value interior-colors'>
-                                     Whatever is cheaper
+                                     Select color
                                   </div>
                                </div>
                                <!--<div class='specific-detail'>
@@ -219,7 +229,7 @@
                    </li>
 
                 </ul>
-                 <button class='see-more-trims'>See more</button>
+                 <!-- <button class='see-more-trims'>See more</button> -->
                  <input name="utf8" type="hidden" value="&#x2713;" />
                  <input type="hidden" name="authenticity_token" value="YWtZ/jFXcw8K0DfBttZXH1P+73nstvON3GcH1PLt9b2Ihg2ElkO3BdpJdYfDWl8JP6siKQ96LrX2NExlMUJVAg==" />
                  <div class="form-group hidden order_form_trim_id">
@@ -331,25 +341,26 @@
                 </div>
                 <div class="specification">
                    <div class="top">
-                      <h5>
-                         2017
-                      </h5>
-                      <h3>
-                         Jeep
-                         <strong>
-                         Cherokee
-                         </strong>
-                      </h3>
-                      <h4>
-                         75th Anniversary 4dr SUV
-                         <small>
-                         2.4L 4cyl 9A
-                         </small>
-                      </h4>
+                         <h5 class="boxYear">-Select Year</h5>
+                          @if(isset($car->brand_name) && isset($car->model_name))
+                            <h3>{{$car->brand_name}}<strong>  {{$car->model_name}}</strong></h3>
+                          @endif
+
+                      
                    </div>
                    <div class="details">
                       <div class="row">
                          <div class="col-sm-7">
+
+                             <div class='specific-detail'>
+                                <div class='detail-name'>
+                                   Style
+                                </div>
+                                <div class='detail-value '>
+                                   <p class="boxStyle">Select style</p>
+                                </div>
+                             </div>
+
                             <div class="specific-detail">
                                <div class="detail-name">
                                   Exterior
@@ -374,13 +385,13 @@
                                   None
                                </div>
                             </div> -->
-                            <div class="specific-detail">
+                            <!--<div class="specific-detail">
                                <div class="detail-name">
                                   Comment
                                </div>
                                <div class="detail-value comment">
                                </div>
-                            </div>
+                            </div> -->
                          </div>
                       </div>
                    </div>

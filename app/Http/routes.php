@@ -104,6 +104,8 @@ Route::get('/deal-model-seller/{id}',  'CarController@deal_model_seller')->name(
 /* User request page of Model Single Contact Page */
 Route::get('/deal-model-user/{id}',  'CarController@deal_model_user')->name('deal_model_user');
 
+/* Single response detail for user */ 
+Route::get('/single-response-user/{id}/{user_id}',  'CarController@single_response_user')->name('single_response_user');
 
 /* Submitting Sellers Response on user requests Models */
 Route::post('/submit_sell_res',  'CarController@submit_sell_res')->name('submit_sell_res');

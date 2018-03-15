@@ -23,7 +23,7 @@
               <th>Address</th>
               <th>City</th>
               <th>Offer</th>
-              <th>Comment</th>
+              <th>Action</th>              
             </tr>
           </thead>
         <tbody>
@@ -35,8 +35,9 @@
               <td>{{$sel_response->contact}}</td>
               <td>{{$sel_response->address}}</td>
               <td>{{$sel_response->city}}</td>
-               <td>{{$sel_response->offer}}</td>
-                <td>{{$sel_response->sel_comment}}</td>
+              <td>{{$sel_response->offer}}</td>
+              <td><a target="_blank" href="{{route('single_response_user', ['id'=> $sel_response->req_id, 'user_id' => $sel_response->user_id] )}}"><button type="button" class="btn btn-primary">View</button></a></td>
+                <!-- <td>{{$sel_response->sel_comment}}</td> -->
             </tr>
           @endforeach
         </tbody>
@@ -504,22 +505,23 @@
                    <label class="collection_check_boxes" for="order_form_interior_colors_79109">Black</label>
                  </span> -->
                </div>
+@if(Auth::user()->id == 1)
+        <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_sell_res')}}" accept-charset="UTF-8" method="post">
 
-  <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_sell_res')}}" accept-charset="UTF-8" method="post">
+                       <div class="form-group text optional order_form_comment"><label class="text optional control-label text-left" for="order_form_comment">Offer: </label>
+                         <input type="text" name="offer" class="text optional form-control form-control">
+                       </div>
 
-                 <div class="form-group text optional order_form_comment"><label class="text optional control-label text-left" for="order_form_comment">Offer: </label>
-                   <input type="text" name="offer" class="text optional form-control form-control">
-                 </div>
+                       <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Any additional comments or special requests?</label>
 
-                 <div class="form-group text optional order_form_comment"><label class="text optional control-label" for="order_form_comment">Any additional comments or special requests?</label>
+                           <textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control form-control" name="sel_comment" id="order_form_comment"></textarea>
 
-                     <textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control form-control" name="sel_comment" id="order_form_comment"></textarea>
-
-                 </div>
-                 <input type="hidden" name="_token" value="{{Session::token()}}">
-                 <input type="hidden" name="req_id" value="{{$car->requests_id}}">
-                 <input type="submit" name="submit" value="Send Offer to User" class="btn s_button"/>
-    </form>
+                       </div>
+                       <input type="hidden" name="_token" value="{{Session::token()}}">
+                       <input type="hidden" name="req_id" value="{{$car->requests_id}}">
+                       <input type="submit" name="submit" value="Send Offer to User" class="btn s_button"/>
+          </form>
+@endif
              </div>
           </div>
        </div>

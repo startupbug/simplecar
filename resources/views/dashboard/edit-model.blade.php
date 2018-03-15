@@ -39,9 +39,26 @@
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                   <label for="exampleInputEmail1">Exterior Color</label>
                   <input type="color" name="ext_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div> -->
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Exterior Color</label>
+                  <input type="color" name="ext_color_prev" value="" id="" placeholder="">
+                  <input type="hidden" name="ext_color" id="ext_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif">
+                  <ul id="extColorList">
+                   @foreach(explode(',', $modelz->ext_color) as $key => $value)
+                <li class="circle" style="background:{{$value}}"><span></span><span class="glyphicon glyphicon-remove"></span></li>
+                
+                <!-- <span class="checkbox">
+                       <input class="check_boxes optional form-control" data-color="{{$value}}" type="checkbox" value="{{$value}}" name="req_ext_color[]" id="order_form_exterior_colors_{{$value}}" />
+                       <label class="collection_check_boxes" for="order_form_exterior_colors_{{$value}}"></label>
+                     </span> -->
+                   @endforeach
+                  </ul>
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
 

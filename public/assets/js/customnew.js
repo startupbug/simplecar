@@ -10,6 +10,9 @@ var base_url  = base_url;
 
 $(document).ready(function(){
 
+	//Disable front page form unless selected
+	  //$('.simple_form').submit(false);
+
 	console.log("Custom JS ==" + base_url);
 
 	/* Login Form Ajax Submit */
@@ -68,7 +71,7 @@ $(document).ready(function(){
 	$("#generation_car_make_id").on('click', function(e){
 		  e.preventDefault();
 		  console.log("Change event");
-
+		   //$('.simple_form').submit(true);
 		  console.log($(this).val());
 		  
 		  var brand_id = $(this).val();
@@ -86,6 +89,7 @@ $(document).ready(function(){
 	          console.log(data);
 	          //$("#modelDropdown").html(data.html);
 	          $('#generation_car_model_id').html(data.html);
+	           $('.dealButton').prop("disabled", false); 
 	          // if(data.success==true){
 	          // 	toastr.success(data.msg);
 
@@ -105,5 +109,21 @@ $(document).ready(function(){
 	        });
 
 	});
+
+
+
+	//Updating Box Code 
+	$("[name='req_year']").on('click', function(e){
+		console.log(121212);
+		 console.log($(this).val());
+		 $(".boxYear").text($(this).val());
+	});
+
+	$("[name='req_style']").on('click', function(e){
+		 //console.log(121212);
+		 //console.log($(this).val());
+		 $(".boxStyle").text($(this).val());
+	});	
+
 
 });

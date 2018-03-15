@@ -76,11 +76,11 @@
             <!-- <li><a href="http://info.simplecar.co/category/best-car-deals">Best deals</a></li>
             <li><a href="http://info.simplecar.co/category/tips-and-tricks-on-car-buying">Car buying tips</a></li> -->
             <!-- If seller show seller button -->
-            @if(Auth::check() && (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 ))
-               <li><a href="{{route('sel_reqs')}}">Seller Requests</a></li>
+            @if(Auth::check() && (Auth::user()->role_id == 1))
+               <li><a href="{{route('sel_reqs')}}">User Requests</a></li>
             @elseif(Auth::check() && Auth::user()->role_id == 2)
               <!-- If user show button to see his requests -->
-
+              <li><a href="{{route('sel_reqs')}}">My Requests</a></li>
             @endif
          </ul>
 

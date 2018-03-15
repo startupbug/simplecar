@@ -180,7 +180,9 @@ class DashboardController extends Controller
                               ->select('models.id as model_id', 'models.brand_id as brand_id', 'models.car_image as image', 'brands.brand_name', 'models.model_name', 'models.year', 'models.style', 'models.ext_color', 'models.int_color', 'models.comment')
                               ->where('models.id', $modelid)
                               ->first();
-                        
+      
+      //dd($data['modelz']);
+
       return view('dashboard.edit-model')->with($data);
     }
 

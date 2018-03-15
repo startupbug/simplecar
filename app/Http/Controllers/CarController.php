@@ -53,7 +53,6 @@ class CarController extends Controller
     					   ->where('brand_id', $request->input('brand_id'))
     					   ->where('models.id', $request->input('model_id'))
     					   ->first();
-        //dd($modelz);
 
     	return view('home.sendrequest')->with('car', $modelz);
     }
@@ -75,16 +74,19 @@ class CarController extends Controller
             $requestz->model_id = $request->input('model_id');
             $requestz->status = 0; //status 0 - requested
 
+            $req_id = "";
+
             if($requestz->save()){
+                $req_id = $requestz->id;
                $this->set_session('Request Successfully Submitted.', true);
             }else{
                $this->set_session('Request Couldnot be Submitted.', false);
             }
 
-            return redirect()->route('home');
+            return redirect()->route('deal_model_user', ['id' => $req_id]);
 
         }catch(\Exception $e){
-            $this->set_session('Request Couldnot be Submitted.'.$e->getMessage(), false);
+            $this->set_session('Request Couldnot be Submitted. Please Try Again with your'.$e->getMessage(), false);
             return redirect()->route('home');
         }
        // dd($request->input());
@@ -104,11 +106,10 @@ class CarController extends Controller
         if(Auth::check() && Auth::user()->role_id == 2){
             //A user
             $data['user_requests']->where('users.id', Auth::user()->id);
-
         }
 
         $data['user_requests'] = $data['user_requests']->get();
-
+       // dd($data['user_requests']);
         return view('home.seller_reqs')->with($data);
     }
 
@@ -135,7 +136,19 @@ class CarController extends Controller
                                        ->join('profiles', 'seller_responses.user_id', '=', 'profiles.user_id')
                                         ->where('seller_responses.req_id', $id)
                                         ->get();
+         //dd($data['sel_responses']);               
         return view('home.sendrequest_user')->with($data);
+    }
+
+    public function single_response_user($id, $user_id){
+
+        $data['single_sel_responses'] = Seller_response::join('users', 'seller_responses.user_id', '=', 'users.id')
+                                       ->join('profiles', 'seller_responses.user_id', '=', 'profiles.user_id')
+                                        ->where('seller_responses.req_id', $id)
+                                        ->where('seller_responses.user_id', $user_id)
+                                        ->first();
+
+        return view('home.single_req_response')->with($data);                                                      
     }
 
     //Seller-user request filter
@@ -160,6 +173,10 @@ class CarController extends Controller
 
         if($request->has('year')){
             $data['user_requests']->where('requests.req_year', $request->input('year'));
+        }
+
+        if(Auth::user()->role_id == 2){
+            $data['user_requests']->where('requests.user_id', Auth::user()->id);
         }
 
         $data['user_requests'] = $data['user_requests']->get(); 
@@ -196,7 +213,7 @@ class CarController extends Controller
             $result = Mail::queue('emails.seller_response', ['seller_name' => $email_content->name
                 ,'sell_email'=>$email_content->email,'sell_contact'=>$sel_res->contact,'sel_comment'=>$sel_res->sel_comment], function ($m) use ($user_email) {
                $m->from('farhanuddin.aimviz@gmail.com', 'SimpleCar');
-               $m->to('farhanuddin.aimviz@gmail.com')->subject('Simple Car Request Response');
+               $m->to($user_email)->subject('Simple Car Request Response');
             });
 
             //updating request status

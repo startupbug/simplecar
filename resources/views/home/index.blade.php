@@ -536,7 +536,7 @@
              </select>
           </div>
           <input type="hidden" name="_token" value="{{Session::token()}}">
-          <button name="button" type="submit" class="btn btn-default btn btn-info">Find best deals</button>
+          <button name="button" type="submit" disabled class="btn btn-default btn btn-info dealButton" disabled>Find best deals</button>
        </form>
     </div>
  </div>

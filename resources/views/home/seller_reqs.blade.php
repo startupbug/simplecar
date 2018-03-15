@@ -5,7 +5,13 @@
 
  <div class='s_userrequest'>
    <ul class="order-menu">
-    <li class="active">User Requests</li>
+   @if(Auth::user()->role_id == 1)
+     <li class="active">User Requests</li>
+   @elseif(Auth::user()->role_id == 2)
+     <li class="active">My Requests</li>
+   @endif
+
+
    </ul>
    <form class="simple_form form-inline  s_form" action="{{route('sel_reqs_filter')}}" accept-charset="UTF-8" method="post">
       <input name="utf8" type="hidden" value="&#x2713;" />
@@ -66,8 +72,8 @@
          Signed in successfully.
       </div> -->
       <div class="row row-eq-height">
-         <div class="container orders-list">
-            @if(!empty($user_requests))
+         <div class="container orders-list">            
+            @if(count($user_requests) > 0)
                   @foreach($user_requests as $request)
                      <div class="col-sm-4">
                      @if(Auth::user()->role_id == 1)
@@ -84,8 +90,11 @@
                                  <h2 class="pull-left">
                                     {{$request->brand_name}}
                                     <strong>
-                                    {{$request->model_name}}
+                                      {{$request->model_name}}
                                     </strong>
+                                     @if((Auth::user()->role_id == 1) && (App\Seller_response::isOffered($request->requests_id)))
+                                       <span class="label label-success">Already Offered</span>
+                                     @endif
                                  </h2>
                                  <div class="generation pull-right">
                                     {{$request->req_year}}

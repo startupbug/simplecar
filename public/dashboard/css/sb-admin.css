@@ -502,3 +502,31 @@ margin-top: 4px;
 
       height: 47px;
 }
+
+ul.color_style_ul{
+  margin: 0;
+  padding: 0;
+}
+ul.color_style_ul li {
+  width: 28px;
+  height: 28px;
+  list-style-type: disc;
+  display: inline-block;
+  margin: 10px 7px;
+  padding-bottom: 28px;
+  padding-left: 1px;
+  padding-right: 26px;
+  border: 1px solid #ccc;
+}
+.delCol, .delColInt {
+    padding-left: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff0;
+    cursor: pointer;
+     text-shadow: 2px 2px;
+}
+.delCol:hover, .delColInt:hover {
+    color: #fff;
+    text-shadow: 0px 2px #666;
+}

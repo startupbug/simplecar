@@ -130,7 +130,7 @@
 				    <label for="exampleInputEmail1">Exterior Color</label>
 				    <input type="color" name="ext_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
             <input type="hidden" name="ext_color" id="ext_color" value="">
-            <ul id="extColorList">
+            <ul id="extColorList" class="color_style_ul">
 
             </ul>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
@@ -140,7 +140,7 @@
 				    <label for="exampleInputEmail1">Interior Color</label>
 				    <input type="color" name="int_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
             <input type="hidden" name="int_color" id="int_color" value="">
-            <ul id="intColorList">
+            <ul id="intColorList" class="color_style_ul">
 
             </ul>
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->

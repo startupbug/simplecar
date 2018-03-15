@@ -69,7 +69,6 @@
            </div>
         </div>
       </div>
-   
     <script type="text/javascript">
      var base_url  = '{{ asset('') }}';
     </script>

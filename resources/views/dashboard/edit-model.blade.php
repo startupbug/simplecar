@@ -13,31 +13,34 @@
         <li class="breadcrumb-item active">All Requests</li>
       </ol>
 
-       @include('partials.error_section') 
+       @include('partials.error_section')
+
       <div class="row">
-        
-           <h1>Edit Model</h1>         
-             <form id="model" action="{{route('edit_model_submit')}}" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Model Name</label>
-                  <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" 
-                  value="@if(isset($modelz->model_name)){{$modelz->model_name}}@endif" placeholder="e.g: Latest">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
+        <div class="col-md-12 text-center">
+          <h2>Edit Model</h2>
+        </div>
+        <div class="col-md-8 offset-md-2 col-sm-12 col-xs-12">
+          <form id="model" action="{{route('edit_model_submit')}}" method="post" enctype="multipart/form-data">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Model Name</label>
+               <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp"
+               value="@if(isset($modelz->model_name)){{$modelz->model_name}}@endif" placeholder="e.g: Latest">
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Year</label>
-                  <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" 
-                  value="@if(isset($modelz->year)){{$modelz->year}}@endif" placeholder="e.g: 2017,2016, 2015">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
+             <div class="form-group">
+               <label for="exampleInputEmail1">Year</label>
+               <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp"
+               value="@if(isset($modelz->year)){{$modelz->year}}@endif" placeholder="e.g: 2017,2016, 2015">
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Style</label>
-                  <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp" 
-                  value="@if(isset($modelz->style)){{$modelz->style}}@endif" placeholder="">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
+             <div class="form-group">
+               <label for="exampleInputEmail1">Style</label>
+               <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp"
+               value="@if(isset($modelz->style)){{$modelz->style}}@endif" placeholder="">
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
 
                 <!--<div class="form-group">
                   <label for="exampleInputEmail1">Exterior Color</label>
@@ -62,47 +65,57 @@
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Interior Color</label>
-                  <input type="color" name="int_color" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif" id="" placeholder="">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
+          <!--    <div class="form-group">
+               <label for="exampleInputEmail1">Exterior Color</label>
+               <input type="color" name="ext_color" class="form-control s_height_color" value="@if(isset($modelz->ext_color)){{$modelz->ext_color}}@endif" id="" placeholder="">
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div> -->
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Brand</label>
-                
-                  <select name="brand_id">
-                    @foreach($brands as $brand)
-                      <option value="{{$brand->id}}" @if($brand->id==$modelz->brand_id)<?php echo "selected"; ?>@endif>{{$brand->brand_name}}</option>
-                    @endforeach
-                  </select>
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>          
 
-                <div class="form-group">
-                  @if(isset($modelz->image))
-                     <img src="{{asset('/public/dashboard/img/car_assets/'.$modelz->image)}}" />
-                  @endif
+             <div class="form-group">
+               <label for="exampleInputEmail1">Interior Color</label>
+               <input type="color" name="int_color" class="form-control s_height_color" value="@if(isset($modelz->int_color)){{$modelz->int_color}}@endif" id="" placeholder="">
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
 
-                  <label for="exampleInputEmail1">Car Image</label>
-                  <input type="file" name="car_image" value="" id="" placeholder="">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
+             <div class="form-group">
+               <label for="exampleInputEmail1">Brand</label>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Additional Comment</label>
-                  <textarea name="comment" id="comment">@if(isset($modelz->comment)){{$modelz->comment}}@endif</textarea>
-                  <input type="hidden" name="model_id" value="{{$modelz->model_id}}">
-                  <input type="hidden" name="_token" value="{{Session::token()}}">
-                  <button type="submit" class="btn btn-primary">Edit Model</button>
+               <select name="brand_id" class="form-control">
+                 @foreach($brands as $brand)
+                   <option value="{{$brand->id}}" @if($brand->id==$modelz->brand_id)<?php echo "selected"; ?>@endif>{{$brand->brand_name}}</option>
+                 @endforeach
+               </select>
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
 
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>                            
-             </form> 
+             <div class="form-group">
+               @if(isset($modelz->image))
+                  <img src="{{asset('/public/dashboard/img/car_assets/'.$modelz->image)}}" />
+               @endif
+
+               <label for="exampleInputEmail1">Car Image</label>
+               <input type="file" name="car_image" value="" id="" placeholder="" class="form-control">
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
+
+             <div class="form-group">
+               <label for="exampleInputEmail1">Additional Comment</label>
+               <textarea name="comment" class="form-control" rows="5" id="comment">@if(isset($modelz->comment)){{$modelz->comment}}@endif</textarea>
+               <input type="hidden" name="model_id" value="{{$modelz->model_id}}">
+               <input type="hidden" name="_token" value="{{Session::token()}}">
+               <br>
+               <button type="submit" class="btn btn-primary">Edit Model</button>
+
+               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
+          </form>
+        </div>
+
 
         <!--
          <div class="col-lg-6">
-           <h1>Add Brand</h1>             
+           <h1>Add Brand</h1>
         <form method="post" action="{{route('brand_post')}}" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Brand Name</label>
@@ -116,25 +129,25 @@
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div> 
+          </div>
           <input type="hidden" name="_token" value="{{Session::token()}}">
           <button type="submit" class="btn btn-primary">Add Brand</button>
         </form>
          </div>
          <div class="col-lg-6">
            <h1>Add Model</h1>
-         
+
              <form id="model" action="{{route('model_submit')}}" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Model Name</label>
             <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: Latest">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Year</label>
             <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e.g: 2017,2016, 2015">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
@@ -152,16 +165,16 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Interior Color</label>
             <input type="color" name="int_color" value="" id="" placeholder="">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Brand</label>
             <select name="brand_id">
-          
+
             </select>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
-          </div>          
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Car Image</label>
@@ -175,11 +188,11 @@
             <input type="hidden" name="_token" value="{{Session::token()}}">
             <button type="submit" class="btn btn-primary">Add Model</button>
 
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> 
-          </div>                            
-             </form>         
-         </div>        
-      </div> 
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+             </form>
+         </div>
+      </div>
       <!-- Area Chart Example
       <div class="card mb-3">
         <div class="card-header">

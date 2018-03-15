@@ -4,13 +4,13 @@
     @include('partials.navbar')
 
   <ul class='order-menu'>
-     <li id="options" class='active'>
+     <li class='active'>
         <span class="translation_missing" title="translation missing: en.application.layout.options, model: Order form, models: Order form, Model: Order Form, Models: Order Form">SEND Offer</span>
      </li>
   </ul>
 
   <!-- <form class="simple_form new_order_form" id="new_order_form" action="{{route('submit_req')}}" accept-charset="UTF-8" method="post"> -->
-    <section id='content1' class="hidden">
+    <section id='content1' class="">
        <div class='container container-center'>
           <div class='row row-eq-height' >
              <div class='col-md-6'>
@@ -336,7 +336,7 @@
           </div>
        </div>
     </section>
-    <section id="content2" class="">
+    <section id="content2" class="hidden">
        <div class="container container-center">
           <div class="row row-eq-height" style="padding-bottom: 25px;">
              <div class="col-md-6">

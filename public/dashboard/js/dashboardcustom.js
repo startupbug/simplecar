@@ -23,7 +23,7 @@ $(document).ready(function(){
 			  {data: 'req_int_color', name: 'req_int_color'},
 			  {data: 'req_comment', name: 'req_comment'},
 			  {data: 'status', name: 'status'},
-			 
+
 		  ]
 	});
 
@@ -56,15 +56,15 @@ $(document).ready(function(){
 					          }else if(data.success==false){
 					          	toastr.error(data.msg);
 					          }
-		                       omodelTable.ajax.reload();		                      
+		                       omodelTable.ajax.reload();
 						  },
-						  error: function (data) { 
+						  error: function (data) {
 		                      omodelTable.ajax.reload();
 		                      console.log(data);
 		                      toastr.error('Oops. Couldnot be Deleted, Please Try again');
-						  },						  	                      
+						  },
 	                  });
-	          }); 		  
+	          });
 
  		  },
 		  "columns": [
@@ -78,15 +78,15 @@ $(document).ready(function(){
 		  ]
 	});
 
-	/*Users Datatable */		
+	/*Users Datatable */
 		ousersTable = $('#usersTable').DataTable({
 			  "processing": true,
 			  "serverSide": true,
 			  "ajax": base_url + "/dashboard/get-users",
 			  "columns": [
 			  	  {data: 'user_name', name: 'user_name'},
-				  {data: 'role_name', name: 'role_name'},			  	  
-				  {data: 'email', name: 'email'}, 
+				  {data: 'role_name', name: 'role_name'},
+				  {data: 'email', name: 'email'},
 				  {data: 'registered_at', name: 'registered_at'},
 			  ]
 		});
@@ -106,15 +106,16 @@ $(document).ready(function(){
 			//Doesn't exists
 			console.log("not exists");
 			ext_color_arr.push(extColor);
-			$("#extColorList").append('<li class="circle" style="background:'+extColor+'"><span></span><span class="glyphicon glyphicon-remove"></span></li>');
+			$("#extColorList").append('<li class="circle" style="background:'+extColor+'"><span></span><span data-id="'+extColor+'" class="glyphicon glyphicon-remove delCol">x</span></li>');
 
 			$("#ext_color").val(ext_color_arr);
 			console.log(ext_color_arr);
+			loadJS();
 		}
 	});
 
    /* Selecting Multiple Colors Interior  */
-   	var int_color_arr = [];   
+   	var int_color_arr = [];
 	$("[name='int_color_prev']").change(function(e){
 		e.preventDefault();
 		var intColor = $(this).val();
@@ -126,11 +127,38 @@ $(document).ready(function(){
 		}else{
 			//Doesn't exists
 			console.log("not exists");
-			int_color_arr.push(intColor);	
-			$("#intColorList").append('<li class="circle2" style="background:'+intColor+'"><span></span></li>');
+			int_color_arr.push(intColor);
+			$("#intColorList").append('<li class="circle2" style="background:'+intColor+'"><span data-id="'+intColor+'" class="glyphicon glyphicon-remove delColInt">x</span></li>');
 			$("#int_color").val(int_color_arr);
 			console.log(int_color_arr);
+			loadJS()
 		}
 	});
+
+	function loadJS(){
+		//del color exterior
+			$(".delCol").click(function(e){
+				 e.preventDefault();
+		      console.log("color:::" + $(this).data('id'));
+					var removColor = $(this).data('id');
+					$(this).closest("li").remove();
+					//Popping Color from Array
+					ext_color_arr.pop(removColor);
+					//Updating input of ext Color
+					$("#ext_color").val(ext_color_arr);
+			});
+
+	   //delete color interior
+		 $(".delColInt").click(function(e){
+				e.preventDefault();
+				 console.log("int color:::" + $(this).data('id'));
+				 var removColor_int = $(this).data('id');
+				 $(this).closest("li").remove();
+				 //Popping Color from Array
+				 int_color_arr.pop(removColor_int);
+				 //Updating input of ext Color
+				 $("#int_color").val(int_color_arr);
+		 });
+	}
 
 });

@@ -482,13 +482,51 @@ footer.sticky-footer {
 .circle{
 width: 24px;
 height: 22px;
-border-radius: 50%; 
+border-radius: 50%;
 margin-top: 4px;
 }
 
 .circle2{
 width: 24px;
 height: 22px;
-border-radius: 50%; 
+border-radius: 50%;
 margin-top: 4px;
+}
+.s_imge_car {
+    width: 100%;
+}
+.s_color_input_text{
+    height: 47px;
+}
+.s_height_color{
+
+      height: 47px;
+}
+
+ul.color_style_ul{
+  margin: 0;
+  padding: 0;
+}
+ul.color_style_ul li {
+  width: 28px;
+  height: 28px;
+  list-style-type: disc;
+  display: inline-block;
+  margin: 10px 7px;
+  padding-bottom: 28px;
+  padding-left: 1px;
+  padding-right: 26px;
+  border: 1px solid #ccc;
+}
+.delCol, .delColInt {
+    padding-left: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff0;
+    cursor: pointer;
+     text-shadow: 2px 2px;
+}
+.delCol:hover, .delColInt:hover {
+    color: #fff;
+    text-shadow: 0px 2px #666;
 }

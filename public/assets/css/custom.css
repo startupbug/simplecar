@@ -8970,7 +8970,11 @@ body {
   background: #525252;
   -webkit-flex-shrink: 0;
   flex-shrink: 0;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
+
 /* line 7, /var/www/web/releases/20170927-054128/apps/client/app/assets/stylesheets/footer.scss */
 #landing_footer .top {
   border-bottom: 1px solid #888;
@@ -10572,4 +10576,30 @@ input[type=radio]:checked + label{
 select.required.form-control.form-control.form-control {
     height: 3.9rem;
     border: 1px solid #ccc;
+}
+body{
+    position:  relative;
+    height: fit-content;
+}
+div#ready {
+    margin-bottom: 60px;
+}
+section#content {
+    margin-bottom: 60px;
+}
+section#content1 {
+    margin-bottom: 60px;
+}
+section#content2 {
+    margin-bottom: 60px;
+}
+.options-form {
+    margin-bottom: 60px;
+}
+section#deal_offer_responses_detail{
+
+    margin-bottom: 60px;
+}
+.s-text-size {
+    font-size: 16px;
 }

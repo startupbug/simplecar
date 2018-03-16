@@ -72,7 +72,7 @@
          Signed in successfully.
       </div> -->
       <div class="row row-eq-height">
-         <div class="container orders-list">            
+         <div class="container orders-list">
             @if(count($user_requests) > 0)
                   @foreach($user_requests as $request)
                      <div class="col-sm-4">
@@ -107,7 +107,7 @@
                      </div>
                   @endforeach
                @else
-                  <h1>No Requests Found</h1>
+                  <h1 class="text-center">No Requests Found</h1>
                @endif
             <!--
             <div class="col-sm-4">

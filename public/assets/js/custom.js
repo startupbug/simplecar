@@ -14498,13 +14498,13 @@ $(function() {
 
     if (initialCarMake != 'Brand' && initialCarMake != '') {
       var options = $(carModels).filter("optgroup[label='" + initialCarMake + "']").html();
-      form.find('.generation_car_model_id select').html(options).removeClass('disabled').attr('disabled', false);
+      //form.find('.generation_car_model_id select').html(options).removeClass('disabled').attr('disabled', false);
     }
 
     if (form.find('.generation_car_make_id select').val() && form.find('.generation_car_model_id select').val()) {
-      form.find('[type="submit"]').attr('disabled', false);
+      //form.find('[type="submit"]').attr('disabled', false);
     } else {
-      form.find('[type="submit"]').attr('disabled', true);
+      //form.find('[type="submit"]').attr('disabled', true);
     }
   });
 

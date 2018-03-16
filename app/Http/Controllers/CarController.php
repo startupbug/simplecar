@@ -22,6 +22,8 @@ use App\User;
 
 use App\Brand;
 
+use App\Profile;
+
 class CarController extends Controller
 {
     public function modelcar_dropdown(Request $request){
@@ -48,12 +50,17 @@ class CarController extends Controller
 
     public function send_model_request(Request $request){
 
+        if(!Auth::check()){
+            //Not Logged In
+           $this->set_session('Please Login to Send Request and Find Deal.', false);
+           return redirect()->route('home');               
+        }
 
            if(Auth::user()->role_id == 3 || Auth::user()->role_id == 1){
                $this->set_session('Admins and Sellers cannot submit Request.', false);
                return redirect()->route('home');               
            }
-           
+
     	$modelz = Modelz::join('brands', 'brands.id', '=', 'models.brand_id')
     					   ->select('models.id as model_id', 'brands.id as brandz_id', 'models.*', 'brands.*')
     					   ->where('brand_id', $request->input('brand_id'))
@@ -127,6 +134,15 @@ class CarController extends Controller
                                 ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'requests.req_ext_color', 'requests.req_int_color')
                                 ->where('requests.id', $id)
                                 ->first();
+        
+        $data['profile_update'] = Profile::where('user_id', Auth::user()->id)->first();
+
+        if(is_null($data['profile_update']->contact) || is_null($data['profile_update']->address) || is_null($data['profile_update']->city)){
+            $data['profile_updated'] = false;
+            $this->set_session('Please Update your Profile to Send Offer.', false);            
+        }else{
+            $data['profile_updated'] = true;
+        }
 
         return view('home.sendrequest_seller')->with($data);
     }
@@ -160,7 +176,7 @@ class CarController extends Controller
 
     //Seller-user request filter
     public function sel_reqs_filter(Request $request){
-       // dd($request->input());
+         //dd($request->input());
         //Getting all Requests
         $data['user_requests'] = Requestz::join('brands', 'requests.brand_id', '=', 'brands.id')
                                 ->join('models', 'requests.model_id', '=', 'models.id')
@@ -171,14 +187,17 @@ class CarController extends Controller
 
         /* Filters */
         if($request->has('brand_id')){
+
             $data['user_requests']->where('requests.brand_id', $request->input('brand_id'));
         }
 
         if($request->has('model_id')){
+
             $data['user_requests']->where('requests.model_id', $request->input('model_id'));
         }
 
         if($request->has('year')){
+
             $data['user_requests']->where('requests.req_year', $request->input('year'));
         }
 
@@ -187,7 +206,7 @@ class CarController extends Controller
         }
 
         $data['user_requests'] = $data['user_requests']->get(); 
-        //dd($data['user_requests']);
+        
         return view('home.seller_reqs')->with($data);         
     }
 

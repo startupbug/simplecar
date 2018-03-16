@@ -4,7 +4,7 @@
   <div id='landing_header'>
            @include('partials.navbar')
 
-    <h1>Gettingz a new car has never been that Simple</h1>
+    <h1>Getting a new car has never been that Simple</h1>
     <div class='container'>
        <form class="simple_form form-inline model-selection" action="{{route('send_model_request')}}" accept-charset="UTF-8" method="post">
           <input name="utf8" type="hidden" value="&#x2713;" />
@@ -536,7 +536,7 @@
              </select>
           </div>
           <input type="hidden" name="_token" value="{{Session::token()}}">
-          <button name="button" type="submit" disabled class="btn btn-default btn btn-info dealButton" disabled>Find best deals</button>
+          <button name="button" type="submit" class="btn btn-default btn btn-info dealButton" disabled>Find best deals</button>
        </form>
     </div>
  </div>
@@ -1138,6 +1138,5 @@
        us for help
     </p>
  </div>
-
 
 @endsection

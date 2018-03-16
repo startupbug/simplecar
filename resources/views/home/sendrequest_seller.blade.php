@@ -313,7 +313,7 @@
 
                  <div class="form-group text optional order_form_comment">
                    <label class="text optional control-label text-left" for="order_form_comment"><b>Offer: </b></label>
-                   <input type="number" class="form-control" name="offer">
+                   <input type="number" class="form-control" name="offer" required>
                  </div>
 
                  <div class="form-group text optional order_form_comment">
@@ -325,11 +325,15 @@
                  <input type="hidden" name="_token" value="{{Session::token()}}">
                  <input type="hidden" name="req_id" value="{{$car->requests_id}}">
 
+              @if($profile_updated)
                  @if(Auth::check())
                   <input type="submit" name="submit" value="Send Offer to User" class="btn s_button"/>
                  @else
                    <input type="submit" name="submit" value="Please Login to Send Offer" class="btn s_button"/>
                  @endif
+              @else
+                <input type="submit" name="submit" value="Send Offer to User" class="btn s_button" disabled>
+              @endif                               
                 </form>
 
              </div>

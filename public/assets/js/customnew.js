@@ -14,6 +14,7 @@ $(document).ready(function(){
 	  //$('.simple_form').submit(false);
 
 	console.log("Custom JS ==" + base_url);
+	
 
 	/* Login Form Ajax Submit */
 
@@ -71,6 +72,9 @@ $(document).ready(function(){
 	$("#generation_car_make_id").on('click', function(e){
 		  e.preventDefault();
 		  console.log("Change event");
+
+		  //enabling submit button attr
+		  $('.dealButton').prop("disabled", false);
 		   //$('.simple_form').submit(true);
 		  console.log($(this).val());
 		  

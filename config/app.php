@@ -54,6 +54,13 @@ return [
 
     'timezone' => 'UTC',
 
+
+    /* Email configs */
+    'MAIL_HOST' => 'smtp.gmail.com',
+    'MAIL_PORT' => 587,
+    'MAIL_USERNAME' => 'farhanuddin.aimviz@gmail.com',
+    'MAIL_PASSWORD' => 'farhan_Aimviz',
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration

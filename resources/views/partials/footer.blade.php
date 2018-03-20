@@ -14,8 +14,8 @@
                        </div>
                        <div class='col-md-8'>
                           <ul class='primary'>
-                             <li><a href="index.php#how_it_works">How it works</a></li>
-                             <li><a href="index.php#reviews">Reviews</a></li>
+                             <li><a href="{{route('home')}}#how_it_works">How it works</a></li>
+                             <li><a href="{{route('home')}}#reviews">Reviews</a></li>
                              <!--<li><a href="#">Best deals</a></li>
                              <li><a href="#">Car buying tips</a></li> -->
                           </ul>

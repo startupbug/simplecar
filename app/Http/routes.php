@@ -66,9 +66,11 @@ Route::get('/dashboard/get-models', 'DashboardController@models_dt')->name('mode
 Route::get('/dashboard/request-responses/{requestid}', 'DashboardController@request_responses')->name('request_responses');
 
 /* Authentication Routes */
+Route::group(['middleware' => 'guest'], function()
+{
 
 //Login View
-//Route::get('/login',  'AuthenticationController@login_index')->name('login_view');
+Route::get('/login',  'AuthenticationController@login_index')->name('login_view');
 
 //Login Post
 Route::post('/login',  'AuthenticationController@login_post')->name('login_post');
@@ -79,8 +81,18 @@ Route::get('/register',  'AuthenticationController@register_index')->name('regis
 //Signup Post
 Route::post('/register',  'AuthenticationController@register_post')->name('signup_post');
 
+});
+
+
+
 //Logout Route
 Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
+
+//Reset Password view
+Route::get('/reset-password/{token?}',  'AuthenticationController@pass_reset_view')->name('pass_reset_view'); 
+
+//Reset Password Post 
+Route::post('/reset_pass_post',  'AuthenticationController@reset_pass_post')->name('reset_pass_post'); 
 
 /* Get Model Car Dropdown Ajax Request */
 

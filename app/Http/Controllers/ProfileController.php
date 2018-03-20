@@ -15,7 +15,7 @@ use Auth;
 class ProfileController extends Controller
 {
     public function index(){
-
+      
       $data['profile'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')
       						 ->select('users.id as user_id', 'profiles.id as profile_id', 'users.name', 'users.email', 
       						 	'profiles.contact', 'profiles.address', 'profiles.city')

@@ -106,7 +106,16 @@
       	 </div>
       	 <div class="col-lg-6">
       	   <h1>Add Model</h1>
-
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                       
 	      	   <form id="model" action="{{route('model_submit')}}" method="post" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Model Name</label>
@@ -128,7 +137,7 @@
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Exterior Color</label>
-				    <input type="color" name="ext_color_prev" class="form-control s_height_color" value="" id="" placeholder="">
+				    <input type="color" name="ext_color_prev" class="form-control s_height_color" value="" id="" placeholder="" required>
             <input type="hidden" name="ext_color" id="ext_color" value="">
             <ul id="extColorList" class="color_style_ul">
 
@@ -148,7 +157,7 @@
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Brand</label>
-				    <select name="brand_id" class="form-control">
+				    <select name="brand_id" class="form-control" required>
 				      @foreach($brands as $brand)
 				        <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
  					    @endforeach
@@ -164,7 +173,7 @@
 
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Additional Comment</label>
-				    <textarea name="comment" id="comment" class="form-control" rows="5"></textarea>
+				    <textarea name="comment" id="comment" class="form-control" rows="5" required></textarea>
 					  <input type="hidden" name="_token" value="{{Session::token()}}">
                     <br>
 					  <button type="submit" class="btn btn-primary">Add Model</button>

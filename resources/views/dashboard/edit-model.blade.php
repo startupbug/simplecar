@@ -18,27 +18,36 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <h2>Edit Model</h2>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif          
         </div>
         <div class="col-md-8 offset-md-2 col-sm-12 col-xs-12">
           <form id="model" action="{{route('edit_model_submit')}}" method="post" enctype="multipart/form-data">
              <div class="form-group">
                <label for="exampleInputEmail1">Model Name</label>
                <input type="text" class="form-control" name="model_name" id="exampleInputEmail1" aria-describedby="emailHelp"
-               value="@if(isset($modelz->model_name)){{$modelz->model_name}}@endif" placeholder="e.g: Latest">
+               value="@if(isset($modelz->model_name)){{$modelz->model_name}}@endif" placeholder="e.g: Latest" required>
                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
              </div>
 
              <div class="form-group">
                <label for="exampleInputEmail1">Year</label>
                <input type="text" class="form-control" name="year" id="exampleInputEmail1" aria-describedby="emailHelp"
-               value="@if(isset($modelz->year)){{$modelz->year}}@endif" placeholder="e.g: 2017,2016, 2015">
+               value="@if(isset($modelz->year)){{$modelz->year}}@endif" placeholder="e.g: 2017,2016, 2015" required>
                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
              </div>
 
              <div class="form-group">
                <label for="exampleInputEmail1">Style</label>
                <input type="text" class="form-control" name="style" id="exampleInputEmail1" aria-describedby="emailHelp"
-               value="@if(isset($modelz->style)){{$modelz->style}}@endif" placeholder="">
+               value="@if(isset($modelz->style)){{$modelz->style}}@endif" placeholder="" required>
                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
              </div>
 

@@ -16,6 +16,10 @@ use App\Profile;
 
 use Hash;
 
+use App\Password_reset;
+
+use Mail;
+
 class AuthenticationController extends Controller
 {
     public function register_index(){
@@ -24,15 +28,24 @@ class AuthenticationController extends Controller
 
     //Posting Register Form
     public function register_post(Request $request){
-        /* Validating User */
         
+        /* Validating User */
+       // dd($request->input());
+        
+        $this->validate($request, [
+            'name' => 'required|alpha|max:15|min:5',
+            'email' => 'required|email|unique:users,email',
+            'role_id' => 'required',
+            'password' => 'required|confirmed|min:6|max:18', 
+        ]);
+
         //inserting user
         try{
             $user = new User();
             $user->password = bcrypt($request->password);
 
             foreach($request->input() as $key => $value) {
-                if($key != '_token' && $key != 'password2' && $key != 'password'){
+                if($key != '_token' && $key != 'password_confirmation' && $key != 'password'){
                     $user->$key = $value;
                 }
             }         
@@ -61,22 +74,50 @@ class AuthenticationController extends Controller
         }
     }
 
+    public function login_index(){
+        return view('authentication.login');
+    }
+
     //Loggin In
     public function login_post(Request $request){
-        //return $request->input();
-
-        //dd($request->input());
+       
        /* Validation */
+
+        $data['ret_suc'] = "";
+        $data['ret_msg'] = "";
+        $data['ret_statu'] = "";
+
+
       try{
-            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
-                return \Response::json(array('success' => true, 'msg' => 'Successfully LoggedIn'), 200);
+            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
+
+                $data['ret_suc'] = true;
+                $data['ret_msg'] = "Successfully LoggedIn";
+                $data['ret_statu'] = 200;
+
             }else{
-                return \Response::json(array('success' => false, 'msg' => 'Invalid Username and Password'), 200);           
+
+                $data['ret_suc'] = false;
+                $data['ret_msg'] = "Invalid Username and Password";
+                $data['ret_statu'] = 200;
+          
+            }
+
+            if($request->ajax()){
+               return \Response::json(array('success' => $data['ret_suc'], 'msg' => $data['ret_msg']), $data['ret_statu']); 
+            }else{
+               $this->set_session($data['ret_msg'], $data['ret_suc']);
+               return redirect()->route('login_view');  
             }
 
       }catch(\Exception $e){
-                return \Response::json(array('success' => false, 'msg' => 'Invalid Username and Password'), 422);
-                //return redirect()->route('login_view');                       
+
+            if($request->ajax()){
+               return \Response::json(array('success' => $data['ret_suc'], 'msg' => $data['ret_msg']), $data['ret_statu']); 
+            }else{
+               $this->set_session($data['ret_msg'], false);
+               return redirect()->route('login_view');  
+            }                      
       }         
     }
 
@@ -117,6 +158,103 @@ class AuthenticationController extends Controller
             $this->set_session('Password couldnot be Updated. '.$e->getMessage(), false);
             return redirect()->route('profile');                
       }
-    }        
-           
+    }
+
+    /*Forget Password Email Module */      
+    public function pass_reset_view($token=null){
+   
+        if(is_null($token)){      
+            $data['page_forget_flag'] = 'email';
+            return view('authentication.forgetpass')->with($data);  
+        }else{
+            $data['page_forget_flag'] = 'newpass';
+            $data['token'] = $token;
+            $password_reset_exists = Password_reset::where('token', $token)->exists();
+
+            if($password_reset_exists){
+                return view('authentication.forgetpass')->with($data);   
+            }else{
+                $this->set_session('Invalid Request. Are you Lost?', false);
+                return redirect()->route('login_view');                
+            }
+        }
+    }
+
+    //Reset Password Post
+    public function reset_pass_post(Request $request){
+
+      if($request->input('reqPassFlag')=="email"){
+
+            $user = User::where('email', '=', $request->input('passemail'))->first();
+
+            if (is_null($user)) {
+                $this->set_session('Email not Found.', false);
+                return redirect()->route('pass_reset_view');
+            }else{
+                        //Emailing user Password Reset Link
+
+                        //Updating Password reset table
+                $token = str_random(30);
+
+                $password_reset = new Password_reset();
+                $password_reset->email = $request->input('passemail');
+                $password_reset->token = $token;
+
+                if($password_reset->save()){
+
+                         //Mail user Password verification Link
+                    $mail = Mail::send('emails.forgotpass_email', ['token' => $token, 'user'=>$user ], function ($m) use ($user, $request) {
+                        $m->from(config('app.MAIL_USERNAME'), 'Simple Car');
+                        $m->to($request->input('passemail'))->subject('SimepleCar Forgot Password Alert');
+                    });
+
+                    $this->set_session('Password Renew Link Mailed to you.', true);
+                    return redirect()->route('pass_reset_view');
+
+                }else{
+                    $this->set_session('Something went wrong. Please Try again.', false);
+                    return redirect()->route('pass_reset_view');
+               }
+
+           }
+            //-----------------------------------------------------------------    
+      }else if($request->input('reqPassFlag')=="newpass"){ //email end 
+
+            /* Password Change Submission */
+                //Password Form Validation
+
+                $this->validate($request, [
+                    'password' => 'required|confirmed|min:6|max:18', 
+                ]);
+                //Delete Password Reset row from table 'password_resets'
+            $password_reset = Password_reset::where('token', $request->input('pass_token'))->first();
+            
+            if(!is_null($password_reset)){
+
+                $user = User::where('email', $password_reset->email )->first();
+                
+                $user_update = User::find($user->id);
+
+                $user_update->password = bcrypt($request->input('password'));
+
+                if($user_update->save()){
+
+                    $pass_deleted = Password_reset::where('token', $request->input('pass_token'))->delete();
+
+                    //Deleting Password row from Password reset table.
+                    $this->set_session('Password Successfully Updated.', true);
+                    return redirect()->route('login_view');
+                }else{
+                    $this->set_session('Password couldnot be Updated.', false);
+                    return redirect()->route('login_view');        
+                }
+
+            }else{
+                    $this->set_session('Password couldnot be Updated.Token mismatch', false);
+                    return redirect()->route('login_view');  
+            }
+        }
+
+    }
+
 }

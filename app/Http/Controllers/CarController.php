@@ -50,6 +50,8 @@ class CarController extends Controller
 
     public function send_model_request(Request $request){
 
+        /* Validation */
+
         if(!Auth::check()){
             //Not Logged In
            $this->set_session('Please Login to Send Request and Find Deal.', false);
@@ -71,8 +73,7 @@ class CarController extends Controller
     }
 
     public function submit_req(Request $request){
-        //dd($request->input());
-       //dd(123);
+        
         /* Validation */
 
        try{
@@ -154,6 +155,7 @@ class CarController extends Controller
                                 ->select('models.car_image', 'brands.brand_name', 'models.model_name', 'requests.req_year', 'requests.req_style', 'requests.id as requests_id', 'requests.req_ext_color', 'requests.req_int_color')
                                 ->where('requests.id', $id)
                                 ->first();
+
          /* Request Responses */
         $data['sel_responses'] = Seller_response::join('users', 'seller_responses.user_id', '=', 'users.id')
                                        ->join('profiles', 'seller_responses.user_id', '=', 'profiles.user_id')
@@ -212,7 +214,11 @@ class CarController extends Controller
 
     public function submit_sell_res(Request $request){
 
-        /* Validation */
+        /* Validation */        
+        $this->validate($request, [
+            'offer' => 'required|integer',
+            'sel_comment' => 'required',
+        ]);
 
         try{
 
@@ -238,7 +244,7 @@ class CarController extends Controller
 
             $result = Mail::queue('emails.seller_response', ['seller_name' => $email_content->name
                 ,'sell_email'=>$email_content->email,'sell_contact'=>$sel_res->contact,'sel_comment'=>$sel_res->sel_comment], function ($m) use ($user_email) {
-               $m->from('farhanuddin.aimviz@gmail.com', 'SimpleCar');
+               $m->from(config('app.MAIL_USERNAME'), 'SimpleCar');
                $m->to($user_email)->subject('Simple Car Request Response');
             });
 

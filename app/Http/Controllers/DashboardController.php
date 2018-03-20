@@ -20,6 +20,8 @@ use Datatables;
 
 use App\Seller_response;
 
+use Auth;
+
 class DashboardController extends Controller
 {
     //Dashboard Index Page
@@ -66,7 +68,16 @@ class DashboardController extends Controller
     public function model_submit(Request $request){
     	
     	 /* Validation */
-      
+        $this->validate($request, [
+            'model_name' => 'required',
+            'year' => 'required',
+            'style' => 'required',
+            'ext_color' => 'required',
+            'int_color' => 'required',
+            'brand_id' => 'required',
+            'comment' => 'required',         
+        ]);
+
      //  dd($request->input());
 
          /* Unique model with brand validation */
@@ -189,6 +200,18 @@ class DashboardController extends Controller
     //Submitting Edit Model
     public function edit_model_submit(Request $request){
         //dd($request->input());
+
+       /* Validation */
+        $this->validate($request, [
+            'model_name' => 'required',
+            'year' => 'required',
+            'style' => 'required',
+            'ext_color' => 'required',
+            'int_color' => 'required',
+            'brand_id' => 'required',
+            'comment' => 'required',         
+        ]);
+
         try{
 
             /* Validation */
@@ -230,21 +253,26 @@ class DashboardController extends Controller
 
     public function del_model(Request $request){
 
-        /* Validation */
-        
-        if($request->has('id')){
-            $modal_id = $request->input('id');
-            $modelz_del = Modelz::find($modal_id);            
-            
-            if($modelz_del->delete()){
-                return \Response::json(array('success' => true, 'msg' => 'Successfully Deleted'), 200);
-            }else{
-                return \Response::json(array('success' => false, 'msg' => 'Couldnot be Deleted'), 200);
-            }
+        if(Auth::user()->role_id == 3){
+
+          if($request->has('id')){
+              $modal_id = $request->input('id');
+              $modelz_del = Modelz::find($modal_id);            
+              
+              if($modelz_del->delete()){
+                  return \Response::json(array('success' => true, 'msg' => 'Successfully Deleted'), 200);
+              }else{
+                  return \Response::json(array('success' => false, 'msg' => 'Couldnot be Deleted'), 200);
+              }
+
+          }else{
+                  return \Response::json(array('success' => false, 'msg' => 'Couldnot be Deleted'), 200);
+          }
 
         }else{
-                return \Response::json(array('success' => false, 'msg' => 'Couldnot be Deleted'), 200);
+                  return \Response::json(array('success' => false, 'msg' => 'Couldnot be Deleted'), 200);
         }
+
     }
 
     /* User Management Index */

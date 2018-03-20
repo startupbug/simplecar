@@ -191,9 +191,20 @@
                 @endif
                 <br>
 
+             <!--     @if (count($errors) > 0)
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach ($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                 @endif           -->      
+
                 @foreach(explode(',', $car->year) as $key => $year)
                     <div class="years">
-                      <input type="radio" name="req_year" value="{{$year}}" @if($key=="0")checked="checked"@endif id="y-{{$year}}">
+                      <!--<input type="radio" name="req_year" value="{{$year}}" @if($key=="0")checked="checked"@endif id="y-{{$year}}"> -->
+                        <input type="radio" name="req_year" value="{{$year}}" id="y-{{$year}}">
                       <label class="container_radio" for="y-{{$year}}">{{$year}}
                         <span class="checkmark"></span>
                       </label>
@@ -209,9 +220,9 @@
                      <div class="years">
                        <input type="radio" name="req_style" value="Any" id="yy">
                        <label class="input_container_radio" for="yy">
-                         Not sure
+                         Not sure 
                          <div class='s_description'>
-                            Send me the best offers for this model
+                            (Any)
                          </div>
                          <span class="checkmark"></span>
                        </label>
@@ -437,7 +448,7 @@
                          <div class="form-group email required user_identity_email">
                             <input class="string email required form-control form-control form-control" required="required" aria-required="true" placeholder="Email" type="email" name="user_identity[email]"
                             value="@if(Auth::check()){{Auth::user()->email}}@endif"
-                            id="user_identity_email">
+                            id="user_identity_email" disabled>
                             <p class="help-block">(Confirm your Email Address)</p>
                          </div>
                          <input type="hidden" name="brand_id" value="{{$car->brandz_id}}" />

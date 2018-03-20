@@ -15,6 +15,17 @@
           <div class='row row-eq-height' >
              <div class='col-md-6'>
                 @include('partials.error_section')
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class='config-wrapper'>
                    <div class='galleries'>
                       <div class='carousel slide' data-ride='carousel' id='carousel-cars-79103'>
@@ -313,14 +324,14 @@
 
                  <div class="form-group text optional order_form_comment">
                    <label class="text optional control-label text-left" for="order_form_comment"><b>Offer: </b></label>
-                   <input type="number" class="form-control" name="offer" required>
+                   <input type="number" value="{{ old('offer') }}" class="form-control" name="offer" required>
                  </div>
 
                  <div class="form-group text optional order_form_comment">
                    <label class="text optional control-label" for="order_form_comment">
                      <b>Any additional comments or special requests?</b>
                    </label>
-                   <textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control" name="sel_comment" id="order_form_comment"></textarea>
+                   <textarea rows="3" placeholder="Navigation is a must, trade-in, etc..." class="text optional form-control" name="sel_comment" id="order_form_comment" required></textarea>
                  </div>
                  <input type="hidden" name="_token" value="{{Session::token()}}">
                  <input type="hidden" name="req_id" value="{{$car->requests_id}}">

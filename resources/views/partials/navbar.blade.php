@@ -11,8 +11,11 @@
                   <form class="simple_form user_identity" accept-charset="UTF-8" method="post" id="login_form">
 
                      <div class='form-inputs'>
-                        <div class="form-group email required user_identity_email"><label class="email required control-label" for="_user_identity_email"><abbr title="required">*</abbr> Email</label><input class="string email required form-control form-control form-control" autofocus="autofocus" required="required" aria-required="true" type="email" name="email" id="_user_identity_email" /></div>
-                        <div class="form-group password required user_identity_password"><label class="password required control-label" for="_user_identity_password"><abbr title="required">*</abbr> Password</label><input class="password required form-control form-control" required="required" aria-required="true" type="password" name="password" id="_user_identity_password" /></div>
+                        <div class="form-group email required user_identity_email"><label class="email required control-label" for="_user_identity_email"><abbr title="required">*</abbr> Email</label><input class="string email required form-control form-control form-control" autofocus="autofocus" required="required" aria-required="true" type="email" name="email" id="_user_identity_email" required/></div>
+                        <div class="form-group password required user_identity_password"><label class="password required control-label" for="_user_identity_password"><abbr title="required">*</abbr> Password</label><input class="password required form-control form-control" required="required" aria-required="true" type="password" name="password" id="_user_identity_password" required/></div>
+                        <div class='pull-right'>
+                           <a href='{{route("pass_reset_view")}}' id='forgotPasswordz'>Forgot your password?</a>
+                        </div>                        
                         <div class="form-group boolean optional user_identity_remember_me"><input name="user_identity[remember_me]" type="hidden" value="0" /><input class="boolean optional" type="checkbox" value="1" name="user_identity[remember_me]" id="_user_identity_remember_me" /><label class="boolean optional" for="_user_identity_remember_me">Remember me</label></div>
                      </div>
                      <div class='form-actions'>
@@ -71,8 +74,8 @@
       </div>
       <div class='collapse navbar-collapse' id='main-menu'>
          <ul class='nav navbar-nav'>
-            <li><a href="index.php#how_it_works">How it works</a></li>
-            <li><a href="index.php#reviews">Reviews</a></li>
+            <li><a href="{{route('home')}}#how_it_works">How it works</a></li>
+            <li><a href="{{route('home')}}#reviews">Reviews</a></li>
             <!-- <li><a href="http://info.simplecar.co/category/best-car-deals">Best deals</a></li>
             <li><a href="http://info.simplecar.co/category/tips-and-tricks-on-car-buying">Car buying tips</a></li> -->
             <!-- If seller show seller button -->

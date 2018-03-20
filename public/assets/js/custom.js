@@ -14,11 +14,55 @@
 
 /* Result Page External Script */
 
+
 function changepage() {
-	$( "#content1" ).addClass( "hidden" );
-	$( "#content2" ).removeClass( "hidden" );
-	$( "#offers" ).addClass( "active" );
-	$( "#options" ).removeClass( "active" );
+	var error=0;
+
+	if(!$('input[name="req_year"]:checked').is(':checked')) { 
+ 		toastr.error('Please select Year to Continue');
+ 		scrollUpz(800, 0);
+ 		error = 1;
+	}
+
+	if(!$('input[name="req_style"]:checked').is(':checked')) { 
+ 		toastr.error('Please select Style to Continue');
+ 		scrollUpz(800, 200);
+ 		error = 1;
+	}
+	//console.log("zzz" + $("input[name='req_ext_color']:checked").length );
+	// if( !$("input[name='req_ext_color']:checked").length > 0 ){
+	// 	//color not selected
+ // 		toastr.error('Please select Exterior Color to Continue');
+ // 		scrollUpz(800, 1300);
+ // 		error = 1;		
+	// }
+
+	// if( !$('#new_order_form input[name="req_int_color"]:checked').length > 0) {
+	// 	//color not selected
+ // 		toastr.error('Please select Interior Color to Continue');
+ // 		scrollUpz(800, 1300);
+ // 		error = 1;		
+	// }	
+
+	if( $("input[name='req_comment']").val() == ''){
+		//color not selected
+ 		toastr.error('Please enter Comment to Continue');
+ 		error = 1;
+	}	
+
+	if(!error){
+		$( "#content1" ).addClass( "hidden" );
+		$( "#content2" ).removeClass( "hidden" );
+		$( "#offers" ).addClass( "active" );
+		$( "#options" ).removeClass( "active" );
+		error=0;
+	}
+}
+
+function scrollUpz(speed, height){
+    $("html, body").animate({
+        scrollTop: height
+    }, speed);
 }
 
 $("#options").click(function(){

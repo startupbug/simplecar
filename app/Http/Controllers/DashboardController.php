@@ -30,6 +30,8 @@ class DashboardController extends Controller
       $data['total_users'] = User::count();
       $data['total_modelz'] = Modelz::count();
 
+      //Get Recent Classes
+      
     	return view('dashboard.dashboard-index')->with($data);
     }
 

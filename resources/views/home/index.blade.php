@@ -10,9 +10,7 @@
           <input name="utf8" type="hidden" value="&#x2713;" />
           <div class="form-group select required generation_car_make_id">
              <select class="select required form-control form-control" required="required" aria-required="Brand" name="brand_id" id="generation_car_make_id"
-             @if(!Auth::check() || Auth::user()->role_id==1 || Auth::user()->role_id==3)
-                disabled title="Only Users Can Request deals"
-             @endif
+           
              >
               @foreach($brands as $brand)
                 <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
@@ -23,9 +21,7 @@
           <div class="form-group grouped_select required generation_car_model_id">
              <select class="grouped_select required  form-control form-control" required="required" aria-required="Model" name="model_id" id="generation_car_model_id" 
 
-             @if(!Auth::check() || Auth::user()->role_id==1 || Auth::user()->role_id==3)
-                disabled title="Only Users Can Request deals"
-             @endif             
+                     
              >
                 <p id="modelDropdown">
                    <option value="123">Modelx</option>

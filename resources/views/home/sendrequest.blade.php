@@ -29,8 +29,6 @@
                               @if(isset($car->car_image))
                                  <img src="{{asset('/public/dashboard/img/car_assets/'.$car->car_image)}}" alt="" />
                               @endif
-
-
                             </div>
                          </div>
                          <a class='left carousel-control' data-slide='prev' href='#carousel-cars-79103' role='button'>
@@ -456,9 +454,14 @@
                          <input type="hidden" name="_token" value="{{Session::token()}}" />
 
                          @if(Auth::check())
+                              
+                              @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3)
+                            <a style="color:#FFFF" href="{{route('login_view')}}"><button type="button" name="commit" value="Please Login to Send Request" class="btn btn-lg btn-block" data-disable-with="Get best offers"> Sellers or Admin cannot Send Request</a>                              
+                              @else
                             <input type="submit" name="commit" value="Get best offers" class="btn btn-lg btn-block" data-disable-with="Get best offers">
+                              @endif
                          @else
-                            <a href="{{route('register_index')}}"><button type="button" name="commit" value="Please Login to Send Request" class="btn btn-lg btn-block" data-disable-with="Get best offers"> Please Login to Send Request</a>
+                            <a style="color:#FFFF" href="{{route('login_view')}}"><button type="button" name="commit" value="Please Login to Send Request" class="btn btn-lg btn-block" data-disable-with="Get best offers"> Please Login to Send Request</a>
                          @endif
 
 

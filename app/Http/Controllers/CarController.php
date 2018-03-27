@@ -52,16 +52,16 @@ class CarController extends Controller
 
         /* Validation */
 
-        if(!Auth::check()){
-            //Not Logged In
-           $this->set_session('Please Login to Send Request and Find Deal.', false);
-           return redirect()->route('home');               
-        }
+        // if(!Auth::check()){
+        //     //Not Logged In
+        //    $this->set_session('Please Login to Send Request and Find Deal.', false);
+        //    return redirect()->route('home');               
+        // }
 
-           if(Auth::user()->role_id == 3 || Auth::user()->role_id == 1){
+   /*        if(Auth::user()->role_id == 3 || Auth::user()->role_id == 1){
                $this->set_session('Admins and Sellers cannot submit Request.', false);
                return redirect()->route('home');               
-           }
+           }*/
 
     	$modelz = Modelz::join('brands', 'brands.id', '=', 'models.brand_id')
     					   ->select('models.id as model_id', 'brands.id as brandz_id', 'models.*', 'brands.*')

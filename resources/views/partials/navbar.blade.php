@@ -94,6 +94,13 @@
                Log in
                </a>
             </li>
+
+            <li>
+               <a class='btn-sign-up' href='{{route("register_index")}}'>
+               Signup As Seller
+               </a>
+            </li>
+
            @else
             <li>
 
